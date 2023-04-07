@@ -1,0 +1,12 @@
+<h1>View Profile</h1>
+<p>Address: {{ profile.address }}</p>
+<p>
+  PAN Document: <a href="{{ profile.pan_no.url }}">{{ profile.pan_no.name }}</a>
+</p>
+<p>
+  Joining Document:
+  <a href="{{ profile.date_of_joining.url }}"
+    >{{ profile.date_of_joining.name }}</a
+  >
+</p>
+<p>Country of Residence: {{ profile.country_of_residence }}</p>
