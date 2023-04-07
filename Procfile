@@ -1,1 +1,1 @@
-web: gunicorn wp_auth.wsgi --log-file -
+web: gunicorn MME.wsgi --log-file -
