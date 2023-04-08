@@ -175,16 +175,45 @@
       </form>
 
     {% else %}
-      <h3>Your uploaded documents</h3>
-      <ul>
-        <li>
-          <a href="{{ user_documents3.inward_File.url }}"
-            >Inward File</a
-          >
-        </li>
-        <li><a href="{{ user_documents3.outward_File.url }}">Outward File</a></li>
-      </ul>
-      <a href="{% url 'edit_documents3' %}" class="custom-btn">Update</a>
+    <h3>Your uploaded documents</h3>
+    <table class="table table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Document Type</th>
+          <th scope="col">Preview</th>
+          <th scope="col">Download</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ...previous table rows... -->
+        <tr>
+          <td>Inward File</td>
+          <td>
+            <div
+              class="file-preview"
+              data-url="{{ user_documents3.inward_File.url }}"
+            ></div>
+          </td>
+          <td>
+            <a href="{{ user_documents3.inward_File.url }}" class="custom-btn">Download</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Outward File</td>
+          <td>
+            <div
+              class="file-preview"
+              data-url="{{ user_documents3.outward_File.url }}"
+            ></div>
+          </td>
+          <td>
+            <a href="{{ user_documents3.outward_File.url }}" class="custom-btn">Download</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a href="{% url 'edit_documents3' %}" class="custom-btn">Update</a>
+    
 
       {% endif %} {% endblock 'content' %}
     </div>

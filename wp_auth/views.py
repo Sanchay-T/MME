@@ -6,6 +6,7 @@ from .models import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
+from django.core.paginator import Paginator
 
 
 def signup(request):
@@ -183,8 +184,12 @@ def travel_calendar(request):
     else:
         form = TravelCalendarForm()
 
-    travels = Travel.objects.filter(user=request.user)
-    context = {"form": form, "travels": travels}
+    travels = Travel.objects.filter(user=request.user).order_by("-date_of_arrival")
+    paginator = Paginator(travels, 5)  # set paginate_by to 5
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    context = {"form": form, "travels": page_obj}
     return render(request, "travel_calendar.html", context)
 
 

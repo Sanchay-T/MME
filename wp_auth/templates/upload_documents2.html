@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block active %}
+{% extends 'base.html' %} {% load static %} {% block active %}
 
 <div class="tutor-row tutor-frontend-dashboard-maincontent">
   <div
@@ -174,17 +174,46 @@
       </form>
 
     {% else %}
-        <h3>Your uploaded documents</h3>
-        <ul>
-          <li>
-            <a href="{{ user_documents2.employment_letter.url }}"
-              >EMPLOYMENT LETTER</a
-            >
-          </li>
-          <li><a href="{{ user_documents2.salary_slip.url }}">SALARY SLIP</a></li>
-        </ul>
-        <a href="{% url 'edit_documents2' %}" class="custom-btn">Update</a>
 
+    <h3>Your uploaded documents</h3>
+<table class="table table-hover table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Document Type</th>
+      <th scope="col">Preview</th>
+      <th scope="col">Download</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>EMPLOYMENT LETTER</td>
+      <td>
+        <div
+          class="file-preview"
+          data-url="{{ user_documents2.employment_letter.url }}"
+        ></div>
+      </td>
+      <td>
+        <a href="{{ user_documents2.employment_letter.url }}" class="custom-btn">Download</a>
+      </td>
+    </tr>
+    <tr>
+      <td>SALARY SLIP</td>
+      <td>
+        <div
+          class="file-preview"
+          data-url="{{ user_documents2.salary_slip.url }}"
+        ></div>
+      </td>
+      <td>
+        <a href="{{ user_documents2.salary_slip.url }}" class="custom-btn">Download</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    
+    
     {% endif %} {% endblock 'content' %}
     </div>
   </div>

@@ -179,14 +179,69 @@
         </form>
 
       {% else %}
-        <h3>Your uploaded documents</h3>
-        <ul>
-          <li><a href="{{ user_documents.pan.url }}">PAN</a></li>
-          <li><a href="{{ user_documents.frro.url }}">FRRO</a></li>
-          <li><a href="{{ user_documents.entry.url }}">Entry</a></li>
-          <li><a href="{{ user_documents.exit.url }}">Exit</a></li>
-        </ul>
-        <a href="{% url 'edit_documents' %}" class="custom-btn">Update</a>
+      <h3>Your uploaded documents</h3>
+      <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Document Type</th>
+            <th scope="col">Preview</th>
+            <th scope="col">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ...previous table rows... -->
+          <tr>
+            <td>PAN</td>
+            <td>
+              <div
+                class="file-preview"
+                data-url="{{ user_documents.pan.url }}"
+              ></div>
+            </td>
+            <td>
+              <a href="{{ user_documents.pan.url }}" class="custom-btn">Download</a>
+            </td>
+          </tr>
+          <tr>
+            <td>FRRO</td>
+            <td>
+              <div
+                class="file-preview"
+                data-url="{{ user_documents.frro.url }}"
+              ></div>
+            </td>
+            <td>
+              <a href="{{ user_documents.frro.url }}" class="custom-btn">Download</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Entry</td>
+            <td>
+              <div
+                class="file-preview"
+                data-url="{{ user_documents.entry.url }}"
+              ></div>
+            </td>
+            <td>
+              <a href="{{ user_documents.entry.url }}" class="custom-btn">Download</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Exit</td>
+            <td>
+              <div
+                class="file-preview"
+                data-url="{{ user_documents.exit.url }}"
+              ></div>
+            </td>
+            <td>
+              <a href="{{ user_documents.exit.url }}" class="custom-btn">Download</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="{% url 'edit_documents' %}" class="custom-btn">Update</a>
+      
 
       {% endif %} {% endblock 'content' %}
     </div>

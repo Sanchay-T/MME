@@ -214,8 +214,10 @@
             </div>
           </div>
           <button type="submit" class="btn btn-dark">Submit</button>
-        </form>
+          <a href="https://incometaxindia.gov.in/Pages/tools/residential-status-calculator.aspx" class="custom-btn1">Residential Status Calculator</a>
 
+        </form>
+      
         <table class="table table-bordered table-hover mt-4">
           <thead class="thead-dark">
             <tr>
@@ -238,7 +240,47 @@
             {% endfor %}
           </tbody>
         </table>
-      </div>
+      
+        {% if travels.has_other_pages %}
+        <nav>
+          <ul class="pagination">
+            {% if travels.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page=1">&laquo;</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?page={{ travels.previous_page_number }}">&lt;</a>
+            </li>
+            {% endif %}
+      
+            {% for num in travels.paginator.page_range %}
+            {% if travels.number == num %}
+            <li class="page-item active">
+              <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+            {% elif num > travels.number|add:'-3' and num < travels.number|add:'3' %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+      
+            {% if travels.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ travels.next_page_number }}">&gt;</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{ travels.paginator.num_pages }}">&raquo;</a>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
+          {% endif %}
+
+        
+        </div>
+      
+        
 
       {% endblock 'content'%}
     </div>
