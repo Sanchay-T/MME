@@ -1,166 +1,246 @@
-{% extends 'base.html' %}
-
-{% block active %}
+{% extends 'base.html' %} {% block active %}
 
 <div class="tutor-row tutor-frontend-dashboard-maincontent">
-  <div class="tutor-col-12 tutor-col-md-4 tutor-col-lg-3 tutor-dashboard-left-menu">
+  <div
+    class="tutor-col-12 tutor-col-md-4 tutor-col-lg-3 tutor-dashboard-left-menu"
+  >
     <ul class="tutor-dashboard-permalinks">
-                    <li class='tutor-dashboard-menu-item tutor-dashboard-menu-index '>
-            <a  href="https://itstest.websinova.com/dashboard/" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-              <span class='tutor-icon-dashboard tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-                Dashboard									</span>
-            </a>
-          </li>
-                        <li class='tutor-dashboard-menu-item tutor-dashboard-menu-my-profile  '>
-            <a  href="https://itstest.websinova.com/dashboard/my-profile" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-              <span class='tutor-icon-user-bold tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-                My Profile									</span>
-            </a>
-          </li>
-          <li class='tutor-dashboard-menu-item tutor-dashboard-menu-enrolled-courses '>
-            <a  href="https://itstest.websinova.com/dashboard/enrolled-courses" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-              <span class='tutor-icon-mortarboard-o tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-                Enrolled Courses									</span>
-            </a>
-          </li>
-          <li class='tutor-dashboard-menu-item tutor-dashboard-menu-purchase_history '>
-            <a  href="https://itstest.websinova.com/dashboard/purchase_history" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-              <span class='tutor-icon-cart-bold tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-                Order History									</span>
-            </a>
-          </li>
-          <li class='tutor-dashboard-menu-item tutor-dashboard-menu-my-profile  '>
-            <a  href="{% url 'upload_documents' %}" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-              <span class='tutor-icon-user-bold tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-                My Compliance									</span>
-            </a>
-          </li>
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-index">
+        <a
+          href="https://itstest.websinova.com/dashboard/"
+          class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
+        >
+          <span
+            class="tutor-icon-dashboard tutor-dashboard-menu-item-icon"
+          ></span>
+          <span class="tutor-dashboard-menu-item-text tutor-ml-12">
+            Dashboard
+          </span>
+        </a>
+      </li>
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
+        <a
+          href="https://itstest.websinova.com/dashboard/my-profile"
+          class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
+        >
+          <span
+            class="tutor-icon-user-bold tutor-dashboard-menu-item-icon"
+          ></span>
+          <span class="tutor-dashboard-menu-item-text tutor-ml-12">
+            My Profile
+          </span>
+        </a>
+      </li>
+      <li
+        class="tutor-dashboard-menu-item tutor-dashboard-menu-enrolled-courses"
+      >
+        <a
+          href="https://itstest.websinova.com/dashboard/enrolled-courses"
+          class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
+        >
+          <span
+            class="tutor-icon-mortarboard-o tutor-dashboard-menu-item-icon"
+          ></span>
+          <span class="tutor-dashboard-menu-item-text tutor-ml-12">
+            Enrolled Courses
+          </span>
+        </a>
+      </li>
+      <li
+        class="tutor-dashboard-menu-item tutor-dashboard-menu-purchase_history"
+      >
+        <a
+          href="https://itstest.websinova.com/dashboard/purchase_history"
+          class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
+        >
+          <span
+            class="tutor-icon-cart-bold tutor-dashboard-menu-item-icon"
+          ></span>
+          <span class="tutor-dashboard-menu-item-text tutor-ml-12">
+            Order History
+          </span>
+        </a>
+      </li>
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
+        <a
+          href="{% url 'upload_documents' %}"
+          class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
+        >
+          <span
+            class="tutor-icon-user-bold tutor-dashboard-menu-item-icon"
+          ></span>
+          <span class="tutor-dashboard-menu-item-text tutor-ml-12">
+            My Compliance
+          </span>
+        </a>
+      </li>
 
-          
+      <li
+        class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile active"
+      >
+        <a
+          href="{% url 'travel_calendar' %}"
+          class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
+        >
+          <span
+            class="tutor-icon-user-bold tutor-dashboard-menu-item-icon"
+          ></span>
+          <span class="tutor-dashboard-menu-item-text tutor-ml-12">
+            My Travel Calendar
+          </span>
+        </a>
+      </li>
 
-          <li class='tutor-dashboard-menu-item tutor-dashboard-menu-my-profile active '>
-            <a  href="{% url 'travel_calendar' %}" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-              <span class='tutor-icon-user-bold tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-                My Travel Calendar									</span>
-            </a>
-          </li>
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
+        <a
+          href="{% url 'upload_documents2' %}"
+          class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
+        >
+          <span
+            class="tutor-icon-user-bold tutor-dashboard-menu-item-icon"
+          ></span>
+          <span class="tutor-dashboard-menu-item-text tutor-ml-12">
+            My Documents
+          </span>
+        </a>
+      </li>
 
-          <li class='tutor-dashboard-menu-item tutor-dashboard-menu-my-profile '>
-            <a  href="{% url 'upload_documents2' %}" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-              <span class='tutor-icon-user-bold tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-                My Documents									</span>
-            </a>
-          </li>
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
+        <a
+          href="{% url 'my_taxes' %}"
+          class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
+        >
+          <span
+            class="tutor-icon-user-bold tutor-dashboard-menu-item-icon"
+          ></span>
+          <span class="tutor-dashboard-menu-item-text tutor-ml-12">
+            My Taxes
+          </span>
+        </a>
+      </li>
 
-          <li class='tutor-dashboard-menu-item tutor-dashboard-menu-my-profile '>
-            <a  href="{% url 'my_taxes' %}" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-              <span class='tutor-icon-user-bold tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-                My Taxes									</span>
-            </a>
-          </li>
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
+        <a
+          href="{% url 'upload_documents3' %}"
+          class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
+        >
+          <span
+            class="tutor-icon-user-bold tutor-dashboard-menu-item-icon"
+          ></span>
+          <span class="tutor-dashboard-menu-item-text tutor-ml-12">
+            My Remitances
+          </span>
+        </a>
+      </li>
 
-          <li class='tutor-dashboard-menu-item tutor-dashboard-menu-my-profile '>
-            <a  href="{% url 'upload_documents3' %}" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-              <span class='tutor-icon-user-bold tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-                My Remitances									</span>
-            </a>
-          </li>
-                        
-                        
-          <li class="tutor-dashboard-menu-divider"></li>							<li class='tutor-dashboard-menu-item tutor-dashboard-menu-settings '>
-            <a  href="https://itstest.websinova.com/dashboard/settings" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-              <span class='tutor-icon-gear tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-                Settings									</span>
-            </a>
-          </li>
-                        <li class='tutor-dashboard-menu-item tutor-dashboard-menu-logout '>
-                          <a href="{% url 'logout' %}">
-
-              <span class='tutor-icon-signout tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-                Logout									</span>
-            </a>
-          </li>
-                  </ul>
+      <li class="tutor-dashboard-menu-divider"></li>
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-settings">
+        <a
+          href="https://itstest.websinova.com/dashboard/settings"
+          class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
+        >
+          <span class="tutor-icon-gear tutor-dashboard-menu-item-icon"></span>
+          <span class="tutor-dashboard-menu-item-text tutor-ml-12">
+            Settings
+          </span>
+        </a>
+      </li>
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-logout">
+        <a href="{% url 'logout' %}">
+          <span
+            class="tutor-icon-signout tutor-dashboard-menu-item-icon"
+          ></span>
+          <span class="tutor-dashboard-menu-item-text tutor-ml-12">
+            Logout
+          </span>
+        </a>
+      </li>
+    </ul>
   </div>
-    
 
   <div class="tutor-col-12 tutor-col-md-8 tutor-col-lg-9">
     <div class="tutor-dashboard-content">
-      
-<div class="tutor-fs-5 tutor-fw-medium tutor-color-black tutor-capitalize-text tutor-mb-1 tutor-dashboard-title">
-</div>
+      <div
+        class="tutor-fs-5 tutor-fw-medium tutor-color-black tutor-capitalize-text tutor-mb-1 tutor-dashboard-title"
+      ></div>
 
-{% endblock active %}
+      {% endblock active %} {% block 'content' %}
+      <style>
+        .error-message {
+          color: red;
+          font-size: 0.85rem;
+          margin-top: 3px;
+        }
+        .btn:hover {
+          background-color: #333;
+          color: #fff;
+        }
+      </style>
 
+      <div class="container">
+        <h1 class="text-center my-4">Travel Calendar</h1>
+        <form method="post" class="mb-5">
+          {% csrf_token %}
+          <div class="mt-3">
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <label for="{{ form.country.auto_id }}">Country</label>
+                {{ form.country }}
+                <span class="error-message">{{ form.country.errors }}</span>
+              </div>
+              <div class="form-group col-md-2.3">
+                <label for="{{ form.date_of_arrival.auto_id }}"
+                  >Date of Arrival</label
+                >
+                {{ form.date_of_arrival }}
+                <span class="error-message"
+                  >{{ form.date_of_arrival.errors }}</span
+                >
+              </div>
+              <div class="form-group col-md-2.3">
+                <label for="{{ form.date_of_departure.auto_id }}"
+                  >Date of Departure</label
+                >
+                {{ form.date_of_departure }}
+                <span class="error-message"
+                  >{{ form.date_of_departure.errors }}</span
+                >
+              </div>
+              <div class="form-group col-md-4">
+                <label for="{{ form.reason.auto_id }}">Reason</label>
+                {{ form.reason }}
+                <span class="error-message">{{ form.reason.errors }}</span>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
 
+        <table class="table table-bordered table-hover mt-4">
+          <thead class="thead-dark">
+            <tr>
+              <th>Country</th>
+              <th>Date of Arrival</th>
+              <th>Date of Departure</th>
+              <th>Days Stayed</th>
+              <th>Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for travel in travels %}
+            <tr>
+              <td>{{ travel.country }}</td>
+              <td>{{ travel.date_of_arrival }}</td>
+              <td>{{ travel.date_of_departure }}</td>
+              <td>{{ travel.days_stayed }} days</td>
+              <td>{{ travel.reason }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
 
-{% block 'content' %}
-<style>
-  .error-message {
-    color: red;
-    font-size: 0.85rem;
-    margin-top: 3px;
-  }
-  .btn:hover {
-    background-color: #333;
-    color: #fff;
-  }
-  
-</style>
-
-<div class="container">
-  <h1 class="text-center my-4">Travel Calendar</h1>
-  <form method="post" class="mb-5">
-    {% csrf_token %}
-    <div class = 'mt-3'>
-    <div class="form-row">
-      <div class="form-group col-md-2">
-        <label for="{{ form.country.auto_id }}">Country</label>
-        {{ form.country }}
-        <span class="error-message">{{ form.country.errors }}</span>
-      </div>
-      <div class="form-group col-md-2.3">
-        <label for="{{ form.date_of_arrival.auto_id }}">Date of Arrival</label>
-        {{ form.date_of_arrival }}
-        <span class="error-message">{{ form.date_of_arrival.errors }}</span>
-      </div>
-      <div class="form-group col-md-2.3">
-        <label for="{{ form.date_of_departure.auto_id }}">Date of Departure</label>
-        {{ form.date_of_departure }}
-        <span class="error-message">{{ form.date_of_departure.errors }}</span>
-      </div>
-      <div class="form-group col-md-4">
-        <label for="{{ form.reason.auto_id }}">Reason</label>
-        {{ form.reason }}
-        <span class="error-message">{{ form.reason.errors }}</span>
-      </div>
-      </div>
+      {% endblock 'content'%}
     </div>
-    <button type="submit" class="btn btn-dark">Submit</button>
-  </form>
-
-  <table class="table table-bordered table-hover mt-4">
-    <thead class="thead-dark">
-      <tr>
-        <th>Country</th>
-        <th>Date of Arrival</th>
-        <th>Date of Departure</th>
-        <th>Days Stayed</th>
-        <th>Reason</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for travel in travels %}
-      <tr>
-        <td>{{ travel.country }}</td>
-        <td>{{ travel.date_of_arrival }}</td>
-        <td>{{ travel.date_of_departure }}</td>
-        <td>{{ travel.days_stayed }} days</td>
-        <td>{{ travel.reason }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  </div>
 </div>
-
-{% endblock 'content'%}

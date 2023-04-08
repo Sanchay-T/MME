@@ -89,9 +89,7 @@
         </a>
       </li>
 
-      <li
-        class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile "
-      >
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
         <a
           href="{% url 'upload_documents2' %}"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
@@ -119,7 +117,9 @@
         </a>
       </li>
 
-      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile active">
+      <li
+        class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile active"
+      >
         <a
           href="{% url 'upload_documents3' %}"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
@@ -164,19 +164,9 @@
         class="tutor-fs-5 tutor-fw-medium tutor-color-black tutor-capitalize-text tutor-mb-1 tutor-dashboard-title"
       ></div>
 
-      {% endblock active %} {% block 'content' %}
-
-      <nav>
-        {% if user.is_authenticated %} 
-          {% if not user_documents and user_documents2 %}
-        <a href="{% url 'upload_documents' %}">Upload Documents</a>
-          {% endif %}
-        {% else %}
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'signup' %}">Sign up</a>
-
-        {% endif %}
-      </nav>
+      {% endblock active %} {% block 'content' %} 
+      
+    {% if not user_documents3 %}
 
       <h2>Upload Documents</h2>
       <form method="post" enctype="multipart/form-data">
@@ -184,16 +174,18 @@
         <button type="submit">Save</button>
       </form>
 
-      {% if user_documents2 %}
+    {% else %}
       <h3>Your uploaded documents</h3>
       <ul>
         <li>
-          <a href="{{ user_documents2.employment_letter.url }}"
-            >EMPLOYMENT LETTER</a
+          <a href="{{ user_documents3.inward_File.url }}"
+            >Inward File</a
           >
         </li>
-        <li><a href="{{ user_documents2.salary_slip.url }}">SALARY SLIP</a></li>
+        <li><a href="{{ user_documents3.outward_File.url }}">Outward File</a></li>
       </ul>
+      <a href="{% url 'edit_documents3' %}" class="custom-btn">Update</a>
+
       {% endif %} {% endblock 'content' %}
     </div>
   </div>

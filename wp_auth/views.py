@@ -14,14 +14,14 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("home")
-
+            return redirect("upload_documents")
     else:
         form = SignUpForm()
     return render(request, "registration/signup.html", {"form": form})
 
 
 @login_required
+# compliance
 def upload_documents(request):
     user_documents = Document.objects.filter(user=request.user).first()
 
@@ -42,19 +42,18 @@ def upload_documents(request):
     return render(request, "upload_documents.html", context)
 
 
-@login_required
 class DocumentUpdateView(LoginRequiredMixin, UpdateView):
     model = Document
     form_class = DocumentForm
     template_name = "upload_documents.html"
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("upload_documents")
 
     def get_object(self, queryset=None):
         return Document.objects.get(user=self.request.user)
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        return super().form_valid(form)
+        return super(DocumentUpdateView, self).form_valid(form)
 
 
 @login_required
@@ -73,12 +72,11 @@ def upload_documents2(request):
 
     context = {
         "form": form,
-        "user_documents": user_documents2,
+        "user_documents2": user_documents2,
     }
     return render(request, "upload_documents2.html", context)
 
 
-@login_required
 class DocumentUpdateView2(LoginRequiredMixin, UpdateView):
     model = Document2
     form_class = DocumentForm2
@@ -109,12 +107,11 @@ def upload_documents3(request):
 
     context = {
         "form": form,
-        "user_documents": user_documents3,
+        "user_documents3": user_documents3,
     }
-    return render(request, "upload_documents2.html", context)
+    return render(request, "upload_documents3.html", context)
 
 
-@login_required
 class DocumentUpdateView3(LoginRequiredMixin, UpdateView):
     model = Document3
     form_class = DocumentForm3
@@ -129,13 +126,14 @@ class DocumentUpdateView3(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
+@login_required
 def home(request):
-    return render(request, "base.html")
+    return render(request, "registration/login.html")
 
 
 def custom_entry(request):
     if request.user.is_authenticated:
-        return redirect("home")
+        return redirect("upload_documents")
     else:
         return redirect("signup")
 
