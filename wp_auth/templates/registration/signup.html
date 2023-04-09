@@ -1,11 +1,11 @@
-{% extends 'base.html' %} {% load static %} {% block active %}
+{% extends 'base.html' %} {% load static %}  {% block active %}
 
 <div class="tutor-row tutor-frontend-dashboard-maincontent">
   <div
     class="tutor-col-12 tutor-col-md-4 tutor-col-lg-3 tutor-dashboard-left-menu"
   >
     <ul class="tutor-dashboard-permalinks">
-      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-index active">
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-index active ">
         <a
           href="https://itstest.websinova.com/dashboard/"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
@@ -103,7 +103,9 @@
         </a>
       </li>
 
-      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
+      <li
+        class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile "
+      >
         <a
           href="{% url 'my_taxes' %}"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
