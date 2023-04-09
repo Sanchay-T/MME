@@ -61,9 +61,7 @@
           </span>
         </a>
       </li>
-      <li
-        class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile active"
-      >
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
         <a
           href="{% url 'upload_documents' %}"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
@@ -77,7 +75,9 @@
         </a>
       </li>
 
-      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
+      <li
+        class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile active"
+      >
         <a
           href="{% url 'travel_calendar' %}"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
@@ -143,10 +143,10 @@
           <span class="tutor-dashboard-menu-item-text tutor-ml-12">
             Settings
           </span>
-        </span>
+        </a>
       </li>
       <li class="tutor-dashboard-menu-item tutor-dashboard-menu-logout">
-        <a href="{% url 'logout' %}">
+        <a href="{% url 'logout' %}" class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black">
           <span
             class="tutor-icon-signout tutor-dashboard-menu-item-icon"
           ></span>
