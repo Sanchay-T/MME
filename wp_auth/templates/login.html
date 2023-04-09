@@ -5,7 +5,7 @@
     class="tutor-col-12 tutor-col-md-4 tutor-col-lg-3 tutor-dashboard-left-menu"
   >
     <ul class="tutor-dashboard-permalinks">
-      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-index">
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-index active ">
         <a
           href="https://itstest.websinova.com/dashboard/"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
@@ -61,9 +61,7 @@
           </span>
         </a>
       </li>
-      <li
-        class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile active"
-      >
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
         <a
           href="{% url 'upload_documents' %}"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
@@ -105,13 +103,15 @@
         </a>
       </li>
 
-      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
+      <li
+        class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile "
+      >
         <a
           href="{% url 'my_taxes' %}"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
         >
           <span
-            class="tutor-icon-badge-dollar tutor-dashboard-menu-item-icon"
+            class="tutor-icon-grid-bold tutor-dashboard-menu-item-icon"
           ></span>
           <span class="tutor-dashboard-menu-item-text tutor-ml-12">
             My Taxes
@@ -125,7 +125,7 @@
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
         >
           <span
-            class="tutor-icon-grid-bold tutor-dashboard-menu-item-icon"
+            class="tutor-icon-badge-dollar tutor-dashboard-menu-item-icon"
           ></span>
           <span class="tutor-dashboard-menu-item-text tutor-ml-12">
             My Remitances
@@ -146,7 +146,10 @@
         </a>
       </li>
       <li class="tutor-dashboard-menu-item tutor-dashboard-menu-logout">
-        <a href="{% url 'logout' %}">
+        <a
+          href="{% url 'logout' %}"
+          class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
+        >
           <span
             class="tutor-icon-signout tutor-dashboard-menu-item-icon"
           ></span>

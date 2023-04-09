@@ -1,26 +1,90 @@
-<!DOCTYPE html>
+
+{% load static %}
+
 <html lang="en-US" class="stm-site-preloader">
 <head>
 	<meta charset="UTF-8" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.2/pdf.min.js"></script>
+
+	<style>
+		.custom-btn1 {
+            background-color: black;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 30px;
+            width: 250px; /* adjust as needed */
+            transition: background-color 0.3s ease;	
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+		.custom-btn1:hover {
+            background-color: red;
+            cursor: pointer;
+			color: white;
+        }
+
+        .custom-btn {
+            background-color: black;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 30px;
+            width: 150px; /* adjust as needed */
+            transition: background-color 0.3s ease;	
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .custom-btn:hover {
+            background-color: red;
+            cursor: pointer;
+			color: white;
+        }
+    </style>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+<!-- Add this to the <head> section -->
+	{% comment %} <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> {% endcomment %}
+	<link rel = "stylesheet" href = "{% static 'css/style.css'%}">
+
+	<!-- Add this before the closing </body> tag -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="https://itstest.websinova.com/xmlrpc.php" />
 	<title>Dashboard &#8211; Testing Website</title>
 <meta name='robots' content='noindex, nofollow' />
-<link rel='dns-prefetch' href='//js.hs-scripts.com' />
-<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
-<link rel='dns-prefetch' href='//fonts.googleapis.com' />
-<link rel="alternate" type="application/rss+xml" title="Testing Website &raquo; Feed" href="https://itstest.websinova.com/feed/" />
-<link rel="alternate" type="application/rss+xml" title="Testing Website &raquo; Comments Feed" href="https://itstest.websinova.com/comments/feed/" />
-<script type="text/javascript">
-// Event Manager For Woocommerce  Ajax URL
-    var ajaxurl = "https://itstest.websinova.com/wp-admin/admin-ajax.php";
-</script>
-<script type="text/javascript">
-window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/itstest.websinova.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.1.1"}};
-/*! This file is auto-generated */
-!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
-</script>
+    <!-- Our project just needs Font Awesome Free's Solid and Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+	<script>
+		$(function() {
+			$(".datepicker").datepicker({
+				dateFormat: "yy-mm-dd",
+			});
+		});
+	</script>
+  
+
+
+
 <style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -35,76 +99,49 @@ img.emoji {
 	padding: 0 !important;
 }
 </style>
-	<link rel='stylesheet' id='formidable-css' href='https://itstest.websinova.com/wp-admin/admin-ajax.php?action=frmpro_css&#038;ver=421216' type='text/css' media='all' />
-<link rel='stylesheet' id='revslider-material-icons-css' href='https://itstest.websinova.com/wp-content/plugins/revslider/public/assets/fonts/material/material-icons.css?ver=6.5.19' type='text/css' media='all' />
-<link rel='stylesheet' id='revslider-basics-css-css' href='https://itstest.websinova.com/wp-content/plugins/revslider/admin/assets/css/basics.css?ver=6.5.19' type='text/css' media='all' />
-<link rel='stylesheet' id='rs-color-picker-css-css' href='https://itstest.websinova.com/wp-content/plugins/revslider/admin/assets/css/tp-color-picker.css?ver=6.5.19' type='text/css' media='all' />
-<link rel='stylesheet' id='revbuilder-ddTP-css' href='https://itstest.websinova.com/wp-content/plugins/revslider/admin/assets/css/ddTP.css?ver=6.5.19' type='text/css' media='all' />
-<link rel='stylesheet' id='rs-roboto-css' href='//fonts.googleapis.com/css?family=Roboto&#038;ver=6.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='tp-material-icons-css' href='//fonts.googleapis.com/icon?family=Material+Icons&#038;ver=6.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='sbi_styles-css' href='https://itstest.websinova.com/wp-content/plugins/instagram-feed/css/sbi-styles.min.css?ver=6.1.3' type='text/css' media='all' />
-<link rel='stylesheet' id='wp-block-library-css' href='https://itstest.websinova.com/wp-includes/css/dist/block-library/style.min.css?ver=6.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='wc-blocks-vendors-style-css' href='https://itstest.websinova.com/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-vendors-style.css?ver=9.6.6' type='text/css' media='all' />
-<link rel='stylesheet' id='wc-blocks-style-css' href='https://itstest.websinova.com/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-style.css?ver=9.6.6' type='text/css' media='all' />
-<style id='joinchat-button-style-inline-css' type='text/css'>
-.wp-block-joinchat-button{border:none!important;text-align:center}.wp-block-joinchat-button figure{display:table;margin:0 auto;padding:0}.wp-block-joinchat-button figcaption{font:normal normal 400 .6em/2em var(--wp--preset--font-family--system-font,sans-serif);margin:0;padding:0}.wp-block-joinchat-button .joinchat-button__qr{background-color:#fff;border:6px solid #25d366;border-radius:30px;box-sizing:content-box;display:block;height:200px;margin:auto;overflow:hidden;padding:10px;width:200px}.wp-block-joinchat-button .joinchat-button__qr canvas,.wp-block-joinchat-button .joinchat-button__qr img{display:block;margin:auto}.wp-block-joinchat-button .joinchat-button__link{align-items:center;background-color:#25d366;border:6px solid #25d366;border-radius:30px;display:inline-flex;flex-flow:row nowrap;justify-content:center;line-height:1.25em;margin:0 auto;text-decoration:none}.wp-block-joinchat-button .joinchat-button__link:before{background:transparent var(--joinchat-ico) no-repeat center;background-size:100%;content:"";display:block;height:1.5em;margin:-.75em .75em -.75em 0;width:1.5em}.wp-block-joinchat-button figure+.joinchat-button__link{margin-top:10px}@media (orientation:landscape)and (min-height:481px),(orientation:portrait)and (min-width:481px){.wp-block-joinchat-button.joinchat-button--qr-only figure+.joinchat-button__link{display:none}}@media (max-width:480px),(orientation:landscape)and (max-height:480px){.wp-block-joinchat-button figure{display:none}}
+{% comment %} <link rel='stylesheet' id='revslider-material-icons-css' href="{% static 'css/material-icons.css' %}" type='text/css' media='all' /> {% endcomment %}
 
-</style>
-<link rel='stylesheet' id='embedpress_blocks-cgb-style-css-css' href='https://itstest.websinova.com/wp-content/plugins/embedpress/Gutenberg/dist/blocks.style.build.css?ver=1680238936' type='text/css' media='all' />
-<link rel='stylesheet' id='classic-theme-styles-css' href='https://itstest.websinova.com/wp-includes/css/classic-themes.min.css?ver=1' type='text/css' media='all' />
+
 <style id='global-styles-inline-css' type='text/css'>
 body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
 :where(.wp-block-columns.is-layout-flex){gap: 2em;}
 .wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
 </style>
-<link rel='stylesheet' id='betterdocs-el-edit-css' href='https://itstest.websinova.com/wp-content/plugins/betterdocs/admin/assets/css/betterdocs-el-edit.css?ver=2.3.6' type='text/css' media='all' />
-<link rel='stylesheet' id='betterdocs-css' href='https://itstest.websinova.com/wp-content/plugins/betterdocs/public/css/betterdocs-public.css?ver=2.3.6' type='text/css' media='all' />
-<link rel='stylesheet' id='simplebar-css' href='https://itstest.websinova.com/wp-content/plugins/betterdocs/public/css/simplebar.css?ver=2.3.6' type='text/css' media='all' />
-<link rel='stylesheet' id='slick-style-css' href='https://itstest.websinova.com/wp-content/plugins/blog-designer-pack/assets/css/slick.css?ver=3.3' type='text/css' media='all' />
-<link rel='stylesheet' id='bdp-public-style-css' href='https://itstest.websinova.com/wp-content/plugins/blog-designer-pack/assets/css/bdp-public.css?ver=3.3' type='text/css' media='all' />
-<link rel='stylesheet' id='contact-form-7-css' href='https://itstest.websinova.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.7.5.1' type='text/css' media='all' />
-<link rel='stylesheet' id='stm-stm-css' href='http://itstest.websinova.com/wp-content/uploads/stm_fonts/stm/stm.css?ver=1.0' type='text/css' media='all' />
-<link rel='stylesheet' id='embedpress-css' href='https://itstest.websinova.com/wp-content/plugins/embedpress/assets/css/embedpress.css?ver=6.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='stm_zoom_main-css' href='https://itstest.websinova.com/wp-content/plugins/eroom-zoom-meetings-webinar/assets/css/frontend/main.css?ver=1.4.6' type='text/css' media='all' />
-<link rel='stylesheet' id='pmpro_frontend-css' href='https://itstest.websinova.com/wp-content/plugins/paid-memberships-pro/css/frontend.css?ver=2.10.3' type='text/css' media='screen' />
-<link rel='stylesheet' id='pmpro_print-css' href='https://itstest.websinova.com/wp-content/plugins/paid-memberships-pro/css/print.css?ver=2.10.3' type='text/css' media='print' />
-<link rel='stylesheet' id='tp_twitter_plugin_css-css' href='https://itstest.websinova.com/wp-content/plugins/recent-tweets-widget/tp_twitter_plugin.css?ver=1.0' type='text/css' media='screen' />
-<link rel='stylesheet' id='tutor-icon-css' href='https://itstest.websinova.com/wp-content/plugins/tutor/assets/css/tutor-icon.min.css?ver=2.1.8' type='text/css' media='all' />
-<link rel='stylesheet' id='tutor-css' href='https://itstest.websinova.com/wp-content/plugins/tutor/assets/css/tutor.min.css?ver=2.1.8' type='text/css' media='all' />
+<link rel='stylesheet' id='tutor-icon-css' href="{% static 'css/tutor-icon.min.css' %}"  type='text/css' media='all' />
+<link rel='stylesheet' id='tutor-css' href="{% static 'css/tutor.min.css' %}" type='text/css' media='all' />
 <link rel='stylesheet' id='buttons-css' href='https://itstest.websinova.com/wp-includes/css/buttons.min.css?ver=6.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='dashicons-css' href='https://itstest.websinova.com/wp-includes/css/dashicons.min.css?ver=6.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css' href="{% static 'css/dashicons.min.css' %}" type='text/css' media='all' />
 <link rel='stylesheet' id='mediaelement-css' href='https://itstest.websinova.com/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17' type='text/css' media='all' />
 <link rel='stylesheet' id='wp-mediaelement-css' href='https://itstest.websinova.com/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=6.1.1' type='text/css' media='all' />
 <link rel='stylesheet' id='media-views-css' href='https://itstest.websinova.com/wp-includes/css/media-views.min.css?ver=6.1.1' type='text/css' media='all' />
 <link rel='stylesheet' id='imgareaselect-css' href='https://itstest.websinova.com/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8' type='text/css' media='all' />
-<link rel='stylesheet' id='tutor-frontend-css' href='https://itstest.websinova.com/wp-content/plugins/tutor/assets/css/tutor-front.min.css?ver=2.1.8' type='text/css' media='all' />
+<link rel='stylesheet' id='tutor-frontend-css' href="{% static 'css/tutor-front.min.css' %}"  type='text/css' media='all' />
 <style id='tutor-frontend-inline-css' type='text/css'>
 .mce-notification.mce-notification-error{display: none !important;}
 :root{--tutor-color-primary:#d0001d;--tutor-color-primary-rgb:208, 0, 29;--tutor-color-primary-hover:#d0001d;--tutor-color-primary-hover-rgb:208, 0, 29;--tutor-body-color:#212327;--tutor-body-color-rgb:33, 35, 39;--tutor-border-color:#cdcfd5;--tutor-border-color-rgb:205, 207, 213;--tutor-color-gray:#e3e5eb;--tutor-color-gray-rgb:227, 229, 235;}
 </style>
-<link rel='stylesheet' id='tutor-frontend-dashboard-css-css' href='https://itstest.websinova.com/wp-content/plugins/tutor/assets/css/tutor-frontend-dashboard.min.css?ver=6.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='tutor-frontend-dashboard-css-css' href="{% static 'css/tutor-frontend-dashboard.min.css' %}" type='text/css' media='all' />
 <link rel='stylesheet' id='woocommerce-layout-css' href='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=7.5.1' type='text/css' media='all' />
 <link rel='stylesheet' id='woocommerce-smallscreen-css' href='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=7.5.1' type='text/css' media='only screen and (max-width: 768px)' />
 <link rel='stylesheet' id='woocommerce-general-css' href='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=7.5.1' type='text/css' media='all' />
 <style id='woocommerce-inline-inline-css' type='text/css'>
 .woocommerce form .form-row .required { visibility: visible; }
 </style>
-<link rel='stylesheet' id='wpsbc-style-css' href='https://itstest.websinova.com/wp-content/plugins/wp-simple-booking-calendar/assets/css/style-front-end.min.css?ver=2.0.8.3' type='text/css' media='all' />
-<link rel='stylesheet' id='font-awesome-min-css' href='https://itstest.websinova.com/wp-content/plugins/eroom-zoom-meetings-webinar/nuxy/metaboxes/assets/vendors/font-awesome.min.css?ver=1681046225' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-min-css' href='https://itstest.websinova.com/wp-content/plugins/eroom-zoom-meetings-webinar/nuxy/metaboxes/assets/vendors/font-awesome.min.css?ver=1680606521' type='text/css' media='all' />
 <link rel='stylesheet' id='hfe-style-css' href='https://itstest.websinova.com/wp-content/plugins/header-footer-elementor/assets/css/header-footer-elementor.css?ver=1.6.13' type='text/css' media='all' />
-<link rel='stylesheet' id='elementor-icons-css' href='https://itstest.websinova.com/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.18.0' type='text/css' media='all' />
-<link rel='stylesheet' id='elementor-frontend-css' href='https://itstest.websinova.com/wp-content/plugins/elementor/assets/css/frontend-lite.min.css?ver=3.11.5' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-css' href="{% static 'css/elementor-icons.min.css' %}"% type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' href= "{% static 'css/frontend-lite.min.css' %}"  type='text/css' media='all' />
 <link rel='stylesheet' id='swiper-css' href='https://itstest.websinova.com/wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min.css?ver=8.4.5' type='text/css' media='all' />
 <link rel='stylesheet' id='elementor-post-219-css' href='https://itstest.websinova.com/wp-content/uploads/elementor/css/post-219.css?ver=1680496088' type='text/css' media='all' />
 <link rel='stylesheet' id='embedpress-elementor-css-css' href='https://itstest.websinova.com/wp-content/plugins/embedpress/assets/css/embedpress-elementor.css?ver=3.6.8' type='text/css' media='all' />
-<link rel='stylesheet' id='elementor-pro-css' href='https://itstest.websinova.com/wp-content/plugins/elementor-pro/assets/css/frontend-lite.min.css?ver=3.11.4' type='text/css' media='all' />
-<link rel='stylesheet' id='font-awesome-5-all-css' href='https://itstest.websinova.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css?ver=4.9.53' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-pro-css' href="{% static 'css/frontend-lite.min1.css' %}"  type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-5-all-css' href='https://itstest.websinova.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css?ver=3.11.5' type='text/css' media='all' />
 <link rel='stylesheet' id='font-awesome-4-shim-css' href='https://itstest.websinova.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css?ver=3.11.5' type='text/css' media='all' />
 <link rel='stylesheet' id='she-header-style-css' href='https://itstest.websinova.com/wp-content/plugins/sticky-header-effects-for-elementor/assets/css/she-header-style.css?ver=1.6.5' type='text/css' media='all' />
-<link rel='stylesheet' id='elementor-post-17971-css' href='https://itstest.websinova.com/wp-content/uploads/elementor/css/post-17971.css?ver=1680520589' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-17971-css' href="{% static 'css/post-17971.css'%}"  type='text/css' media='all' />
 <link rel='stylesheet' id='hfe-widgets-style-css' href='https://itstest.websinova.com/wp-content/plugins/header-footer-elementor/inc/widgets-css/frontend.css?ver=1.6.13' type='text/css' media='all' />
-<link rel='stylesheet' id='elementor-post-13168-css' href='https://itstest.websinova.com/wp-content/uploads/elementor/css/post-13168.css?ver=1680866089' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-13168-css' href='https://itstest.websinova.com/wp-content/uploads/elementor/css/post-13168.css?ver=1680526412' type='text/css' media='all' />
 <link rel='stylesheet' id='bootstrap-css' href='https://itstest.websinova.com/wp-content/themes/consulting/assets/css/bootstrap.min.css?ver=6.2.9' type='text/css' media='all' />
 <link rel='stylesheet' id='vc_font_awesome_5_shims-css' href='https://itstest.websinova.com/wp-content/plugins/js_composer/assets/lib/bower/font-awesome/css/v4-shims.min.css?ver=6.9.0' type='text/css' media='all' />
 <style id='vc_font_awesome_5_shims-inline-css' type='text/css'>
@@ -112,11 +149,11 @@ body #wrapper .fa.fa-facebook{font-family:'Font Awesome 5 Brands' !important;}
 </style>
 <link rel='stylesheet' id='vc_font_awesome_5-css' href='https://itstest.websinova.com/wp-content/plugins/js_composer/assets/lib/bower/font-awesome/css/all.min.css?ver=6.9.0' type='text/css' media='all' />
 <style id='vc_font_awesome_5-inline-css' type='text/css'>
-body #wrapper .fa.fa-map-marker{font-family:'FontAwesome' !important;} body .fa.fa-map-marker:before{content:"\f041"}
+body #wrapper .fa.fa-map-marker{font-family:'FontAwesome' !important;} body .fa.fa-map-marker:before{content:"041"}
 </style>
 <link rel='stylesheet' id='font-awesome-css' href='https://itstest.websinova.com/wp-content/themes/consulting/assets/css/font-awesome.min.css?ver=6.2.9' type='text/css' media='all' />
-<link rel='stylesheet' id='consulting-style-css' href='https://itstest.websinova.com/wp-content/themes/consulting/style.css?ver=6.2.9' type='text/css' media='all' />
-<link rel='stylesheet' id='consulting-layout-css' href='https://itstest.websinova.com/wp-content/themes/consulting/assets/css/layouts/layout_atlanta/main.css?ver=6.2.9' type='text/css' media='all' />
+{% comment %} <link rel='stylesheet' id='consulting-style-css' href='https://itstest.websinova.com/wp-content/themes/consulting/style.css?ver=6.2.9' type='text/css' media='all' /> {% endcomment %}
+{% comment %} <link rel='stylesheet' id='consulting-layout-css' href='https://itstest.websinova.com/wp-content/themes/consulting/assets/css/layouts/layout_atlanta/main.css?ver=6.2.9' type='text/css' media='all' /> {% endcomment %}
 <style id='consulting-layout-inline-css' type='text/css'>
 .page_title{ color: rgba(209,52,52,1) !important; color: url(http://r) !important; background-repeat: no-repeat !important; background-repeat: url(http://n) !important; }body .page_title h1:after{
 				background: rgba(75,181,85,1);
@@ -143,7 +180,7 @@ body #wrapper .fa.fa-map-marker{font-family:'FontAwesome' !important;} body .fa.
 <link rel='stylesheet' id='select2-css' href='https://itstest.websinova.com/wp-content/themes/consulting/assets/css/select2.min.css?ver=6.2.9' type='text/css' media='all' />
 <link rel='stylesheet' id='header_builder-css' href='https://itstest.websinova.com/wp-content/themes/consulting/assets/css/header_builder.css?ver=6.2.9' type='text/css' media='all' />
 <link rel='stylesheet' id='consulting-default-font-css' href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C700%2C700italic%2C900%2C900italic&#038;ver=6.2.9' type='text/css' media='all' />
-<link rel='stylesheet' id='stm-skin-custom-generated-css' href='http://itstest.websinova.com/wp-content/uploads/stm_uploads/skin-custom.css?ver=6903' type='text/css' media='all' />
+<link rel='stylesheet' id='stm-skin-custom-generated-css' href='http://itstest.websinova.com/wp-content/uploads/stm_uploads/skin-custom.css?ver=4748' type='text/css' media='all' />
 <link rel='stylesheet' id='consulting-theme-options-css' href='http://itstest.websinova.com/wp-content/uploads/stm_uploads/theme_options.css?ver=6.2.9' type='text/css' media='all' />
 <link rel='stylesheet' id='consulting-global-styles-css' href='https://itstest.websinova.com/wp-content/themes/consulting/assets/css/layouts/global_styles/main.css?ver=6.2.9' type='text/css' media='all' />
 <style id='consulting-global-styles-inline-css' type='text/css'>
@@ -264,27 +301,16 @@ body #wrapper .fa.fa-map-marker{font-family:'FontAwesome' !important;} body .fa.
 <link rel='stylesheet' id='stm_megamenu-css' href='https://itstest.websinova.com/wp-content/themes/consulting/inc/megamenu/assets/css/megamenu.css?ver=6.1.1' type='text/css' media='all' />
 <link rel='stylesheet' id='dflip-icons-style-css' href='https://itstest.websinova.com/wp-content/plugins/3d-flipbook-dflip-lite/assets/css/themify-icons.min.css?ver=1.7.35' type='text/css' media='all' />
 <link rel='stylesheet' id='dflip-style-css' href='https://itstest.websinova.com/wp-content/plugins/3d-flipbook-dflip-lite/assets/css/dflip.min.css?ver=1.7.35' type='text/css' media='all' />
-<link rel='stylesheet' id='mep-jquery-ui-style-css' href='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/css/jquery-ui.css?ver=6.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='mep-event-style-css' href='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/css/style.css?ver=1681046225' type='text/css' media='all' />
-<link rel='stylesheet' id='filter_pagination-css' href='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/css/filter_pagination.css?ver=6.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='mep-event-timeline-min-style-css' href='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/css/timeline.min.css?ver=6.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='font-awesome-css-cdn-css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css?ver=1' type='text/css' media='all' />
-<link rel='stylesheet' id='font-awesome-css-cdn-5.2.0-css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css?ver=1' type='text/css' media='all' />
-<link rel='stylesheet' id='mep-calendar-min-style-css' href='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/css/calendar.min.css?ver=6.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='flaticon-css' href='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/fonts/flaticon/flaticon.css?ver=6.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='mep-event-owl-carousal-main-style-css' href='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/css/owl.carousel.min.css?ver=6.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='mep-event-owl-carousal-default-style-css' href='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/css/owl.theme.default.min.css?ver=6.1.1' type='text/css' media='all' />
 <link rel='stylesheet' id='eael-general-css' href='https://itstest.websinova.com/wp-content/plugins/essential-addons-for-elementor-lite/assets/front-end/css/view/general.min.css?ver=5.6.4' type='text/css' media='all' />
 <link rel='stylesheet' id='slick-css-css' href='https://itstest.websinova.com/wp-content/plugins/tutor-lms-elementor-addons/assets/css/slick.min.css?ver=2.0.6' type='text/css' media='all' />
 <link rel='stylesheet' id='slick-theme-css-css' href='https://itstest.websinova.com/wp-content/plugins/tutor-lms-elementor-addons/assets/css/slick-theme.css?ver=2.0.6' type='text/css' media='all' />
-<link rel='stylesheet' id='tutor-elementor-css-css' href='https://itstest.websinova.com/wp-content/plugins/tutor-lms-elementor-addons/assets/css/tutor-elementor.min.css?ver=2.0.6' type='text/css' media='all' />
+<link rel='stylesheet' id='tutor-elementor-css-css' href="{% static 'css/tutor-elementor.min.css' %}" type='text/css' media='all' />
 <link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap&#038;ver=6.1.1' type='text/css' media='all' />
-<link rel='stylesheet' id='elementor-icons-shared-0-css' href='https://itstest.websinova.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css?ver=5.15.3' type='text/css' media='all' />
-<link rel='stylesheet' id='elementor-icons-fa-solid-css' href='https://itstest.websinova.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css?ver=5.15.3' type='text/css' media='all' />
-<link rel='stylesheet' id='elementor-icons-fa-brands-css' href='https://itstest.websinova.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min.css?ver=5.15.3' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-shared-0-css' href="{% static 'css/fontawesome.min.css' %}" type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-fa-solid-css' href="{% static 'css/solid.min.css' %}" type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-fa-brands-css' href="{% static 'css/brands.min.css' %}" type='text/css' media='all' />
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><script type='text/javascript' id='jquery-core-js-extra'>
 /* <![CDATA[ */
-var mep_ajax = {"mep_ajaxurl":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php"};
 var xlwcty = {"ajax_url":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php","version":"2.16.0","wc_version":"7.5.1"};
 /* ]]> */
 </script>
@@ -293,7 +319,7 @@ var xlwcty = {"ajax_url":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/embedpress/assets/js/pdfobject.min.js?ver=3.6.8' id='embedpress-pdfobject-js'></script>
 <script type='text/javascript' id='utils-js-extra'>
 /* <![CDATA[ */
-var userSettings = {"url":"\/","uid":"13","time":"1681046225","secure":"1"};
+var userSettings = {"url":"\/","uid":"10","time":"1680606521","secure":"1"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-includes/js/utils.min.js?ver=6.1.1' id='utils-js'></script>
@@ -302,11 +328,17 @@ var userSettings = {"url":"\/","uid":"13","time":"1681046225","secure":"1"};
 <!--[if lt IE 8]>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-includes/js/json2.min.js?ver=2015-05-03' id='json2-js'></script>
 <![endif]-->
+<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.7.5.1' id='jquery-blockui-js'></script>
+<script type='text/javascript' id='wc-add-to-cart-js-extra'>
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%&elementor_page_id=16045","i18n_view_cart":"View cart","cart_url":"https:\/\/itstest.websinova.com\/cart-2\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=7.5.1' id='wc-add-to-cart-js'></script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js?ver=3.11.5' id='font-awesome-4-shim-js'></script>
+<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/js_composer/assets/js/vendors/woocommerce-add-to-cart.js?ver=6.9.0' id='vc_woocommerce-add-to-cart-js-js'></script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/themes/consulting/inc/megamenu/assets/js/megamenu.js?ver=6.1.1' id='stm_megamenu-js'></script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/sticky-header-effects-for-elementor/assets/js/she-header.js?ver=1.6.5' id='she-header-js'></script>
-<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js?ver=1' id='mep-moment-js-js'></script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/js/calendar.min.js?ver=1' id='mep-calendar-scripts-js'></script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/tutor-lms-elementor-addons/assets/js/slick.min.js?ver=2.0.6' id='etlms-slick-library-js'></script>
 <script type='text/javascript' id='tutor-elementor-js-js-before'>
 const etlmsUtility = {"is_editor_mode":false}
@@ -1067,157 +1099,14 @@ const etlmsUtility = {"is_editor_mode":false}
 			}
 		});
 	</script>-->
-    <script type="text/javascript">window.ccb_nonces = {"ccb_paypal":"9572481d28","ccb_stripe":"f01fbe339c","ccb_contact_form":"331b7ad18b","ccb_woo_checkout":"fedcec5b35","ccb_add_order":"45909d7bf4","ccb_orders":"9a09d39e9e","ccb_update_order":"1fe52ca595","ccb_send_invoice":"a66f19e0bb","ccb_get_invoice":"af83524570"};</script>		<script>
+    <script type="text/javascript">window.ccb_nonces = {"ccb_paypal":"1ad05bc907","ccb_stripe":"6f29e6d028","ccb_contact_form":"f388f3f815","ccb_woo_checkout":"4a9e4eaaf7","ccb_add_order":"d923ad819d","ccb_orders":"9cb5d39821","ccb_update_order":"3daa3b7b9f","ccb_send_invoice":"7fb33303a1","ccb_get_invoice":"9a0be7ea9a"};</script>		<script>
 			var daysStr = "Days";
 			var hoursStr = "Hours";
 			var minutesStr = "Minutes";
 			var secondsStr = "Seconds";
 		</script>
-					<!-- DO NOT COPY THIS SNIPPET! Start of Page Analytics Tracking for HubSpot WordPress plugin v10.1.13-->
-			<script type="text/javascript" class="hsq-set-content-id" data-content-id="standard-page">
-				var _hsq = _hsq || [];
-				_hsq.push(["setContentType", "standard-page"]);
-			</script>
+					
 			<!-- DO NOT COPY THIS SNIPPET! End of Page Analytics Tracking for HubSpot WordPress plugin -->
-			        <style>
-            /*  Custom CSS Code From Event Manager For Woocommerce  Plugin */
-                    </style>
-            <style>
-		.pagination_area button[class*="defaultButton_xs"],
-        .list_with_filter_section [class*="defaultButton"],
-        div.item_hover_effect a{
-            background-color:#ffbe30;
-        }
-        div.item_hover_effect a:hover{
-            color:#ffbe30;background-color:#fff;border:1px solid #ffbe30;
-        }
-        ul.mp_event_more_date_list li:hover{
-            background-color:#ffbe30;
-        }
-        .mep-default-sidrbar-events-schedule ul li i, .mep-ev-start-date, h3.mep_list_date i, .df-ico i, .mep-default-sidrbar-address ul li i, .mep-default-sidrbar-social ul li a, button.mep-cat-control, .pagination-sec a {
-            background: #ffbe30;
-        }
-        .mep-default-sidrbar-meta .fa-list-alt,.mep-list-footer ul li i {
-            background: transparent;
-            color: #ffbe30;
-        }
-        .mep_more_date_btn{
-            border: 1px solid #ffbe30;
-            background: transparent;
-            color: #ffbe30;
-        }
-        .mep-default-sidrbar-meta p a{
-            color: #ffbe30;
-        }
-        .mep_more_date_btn:before{
-            background: #ffbe30;
-            border-color: #ffbe30;
-        }
-        .mep-default-sidrbar-events-schedule h3 i, .mep_event_list .mep_list_date, .mep-event-theme-1 .mep-social-share li a, .mep-template-2-hamza .mep-social-share li a {
-            color: #ffbe30;
-        }
-
-        .mep_event_list_item:hover {
-            border-color: #ffbe30;
-        }
-
-        .mep_event_list_item .mep-list-header:before, .mep_event_grid_item .mep-list-header:before {
-            border-color: #ffbe30;
-        }
-
-
-        /*Cart sec Label Style*/
-        .mep-default-feature-cart-sec h3, .mep-event-theme-1 h3.ex-sec-title, .mep-tem3-mid-sec h3.ex-sec-title, .mep-tem3-title-sec, 
-		.royal_theme h3.ex-sec-title,
-		.mep-events-wrapper .royal_theme table.mep_event_add_cart_table,
-		.vanilla_theme.mep-default-theme div.mep-default-feature-date, 
-		.vanilla_theme.mep-default-theme div.mep-default-feature-time, 
-		.vanilla_theme.mep-default-theme div.mep-default-feature-location,
-		.vanilla_theme h3.ex-sec-title,
-		.vanilla_theme div.df-dtl h3,
-		.vanilla_theme div.df-dtl p{
-            background: #ffbe30;
-            color: #ffffff;
-        }
-
-        /*FAQ Sec Style*/
-        .mep-default-feature-faq-sec h4, .tmep-emplate-3-faq-sec .mep-event-faq-part h4 {
-            background: #ffbe30;
-            color: #ffffff;
-        }
-
-        h3.ex-sec-title{
-            background: #ffbe30;
-        }
-
-        .ex-sec-title{
-            background: #ffbe30;
-            color: #ffffff;
-        }
-
-        /*Cart Button Style*/
-		button.mpwemasp_get_sp,
-        .mep-default-feature-cart-sec button.single_add_to_cart_button.button.alt.btn-mep-event-cart, .mep-event-theme-1 .btn-mep-event-cart, .mep-template-2-hamza .btn-mep-event-cart, .mep-tem3-mid-sec .btn-mep-event-cart, .button.button-default.woocommerce.button.alt.button.alt.btn-mep-event-cart {
-            background: #ffbe30;
-            color: #ffffff !important;
-            border-color: #ffbe30;
-        }
-
-        /*Calender Button Style*/
-        .mep-default-sidrbar-calender-btn a, .mep-event-theme-1 .mep-add-calender, .mep-template-2-hamza .mep-add-calender, .mep-tem3-mid-sec .mep-add-calender, #mep_add_calender_button, .royal_theme #mep_add_calender_button, .royal_theme ul#mep_add_calender_links li a {
-            background: #ffbe30;
-            color: #ffffff !important;
-            border-color: #ffbe30;
-        }
-        #mep_add_calender_button,
-        ul#mep_add_calender_links li a{
-            background: #ffbe30;
-        }
-        /**/
-        .mep_list_event_details p.read-more a{
-            color: #ffbe30;
-        }
-		.royal_theme .mep-royal-header,
-		.royal_theme .mep-default-feature-content{
-		    background: ;
-		}
-		.royal_theme .mep-default-col-1,
-		.royal_theme .mep-default-col-2{
-			background-color: ;
-		}
-		.royal_theme .df-ico i,
-		.royal_theme .mep-default-sidrbar-social ul li a,
-		.royal_theme .mep-default-sidrbar-events-schedule ul li i,
-        .royal_theme .mep-default-sidrbar-meta .fa-list-alt,
-        .royal_theme .mep-default-sidrbar-events-schedule h3 i{
-			background-color: ;
-		}
-		.royal_theme .mep-default-title,
-		.royal_theme div.df-dtl h3,
-		.royal_theme .mep-default-col-2,
-		.mep-events-wrapper .royal_theme table td{
-			border-color: ;
-		}
-		.royal_theme .mep-default-title h2, 
-		.royal_theme .section-heading h2,
-		.royal_theme div.df-dtl h3,
-		.royal_theme div.df-dtl p,
-		.royal_theme .mep-default-sidrbar-map h3, 
-		.royal_theme .mep-default-sidrbar-events-schedule h3, 
-		.royal_theme h4.mep-cart-table-title,
-		.royal_theme table td,
-		.royal_theme div.mep-default-feature-content p, 
-		.royal_theme div.mep-default-feature-content ul, 
-		.royal_theme div.mep-default-feature-content ul li,
-		.royal_theme .mep-default-sidrbar-meta p, 
-		.royal_theme .mep-default-sidrbar-meta p a, 
-		.royal_theme .mep-default-sidrbar-events-schedule h3,
-		.royal_theme .mep-default-sidrbar-events-schedule,
-		.royal_theme .mep-default-sidrbar-price-seat h5{
-            color: ;
-        }
-            </style>
-    <style id="mystickymenu" type="text/css">#mysticky-nav { width:100%; position: static; }#mysticky-nav.wrapfixed { position:fixed; left: 0px; margin-top:0px;  z-index: 99990; -webkit-transition: 0.3s; -moz-transition: 0.3s; -o-transition: 0.3s; transition: 0.3s; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)"; filter: alpha(opacity=90); opacity:0.9; background-color: #f7f5e7;}#mysticky-nav.wrapfixed .myfixed{ background-color: #f7f5e7; position: relative;top: auto;left: auto;right: auto;}#mysticky-nav .myfixed { margin:0 auto; float:none; border:0px; background:none; max-width:100%; }</style>			<style type="text/css">
 																															</style>
 				<script type="text/javascript">
 		var stm_wpcfto_ajaxurl = 'https://itstest.websinova.com/wp-admin/admin-ajax.php';
@@ -1229,17 +1118,17 @@ const etlmsUtility = {"is_editor_mode":false}
 		}
 	</style>
 		<script>
-		var stm_wpcfto_nonces = {"wpcfto_save_settings":"ae295cef7b","get_image_url":"0138803a17","wpcfto_upload_file":"45771bd846","wpcfto_search_posts":"48f209096b"};
+		var stm_wpcfto_nonces = {"wpcfto_save_settings":"9eea410edc","get_image_url":"3726bf2848","wpcfto_upload_file":"39987d62ab","wpcfto_search_posts":"d9833e06d7"};
 	</script>
 			<script type="text/javascript">
 			var ajaxurl = 'https://itstest.websinova.com/wp-admin/admin-ajax.php';
-			var stm_ajax_load_events = '6bf31cbbd7';
-			var stm_ajax_load_portfolio = '31e626950a';
-			var stm_ajax_add_event_member_sc = '98bcff3ddd';
-			var stm_custom_register = '7a2062bdcd';
-			var stm_get_prices = '8cb741dab6';
-			var stm_get_history = '2cd5874cfe';
-			var stm_ajax_add_review = '29fbdf3acf';
+			var stm_ajax_load_events = '851ce7757d';
+			var stm_ajax_load_portfolio = 'dbee0d5af5';
+			var stm_ajax_add_event_member_sc = 'e359b5f8c9';
+			var stm_custom_register = '7e7dce13f3';
+			var stm_get_prices = 'f1f815dd96';
+			var stm_get_history = 'ad1acc306e';
+			var stm_ajax_add_review = '02d932bca5';
 		</script>
 			<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
 	<script data-cfasync="false"> var dFlipLocation = "https://itstest.websinova.com/wp-content/plugins/3d-flipbook-dflip-lite/assets/"; var dFlipWPGlobal = {"text":{"toggleSound":"Turn on\/off Sound","toggleThumbnails":"Toggle Thumbnails","toggleOutline":"Toggle Outline\/Bookmark","previousPage":"Previous Page","nextPage":"Next Page","toggleFullscreen":"Toggle Fullscreen","zoomIn":"Zoom In","zoomOut":"Zoom Out","toggleHelp":"Toggle Help","singlePageMode":"Single Page Mode","doublePageMode":"Double Page Mode","downloadPDFFile":"Download PDF File","gotoFirstPage":"Goto First Page","gotoLastPage":"Goto Last Page","share":"Share","mailSubject":"I wanted you to see this FlipBook","mailBody":"Check out this site ","loading":"DearFlip: Loading "},"moreControls":"download,pageMode,startPage,endPage,sound","hideControls":"","scrollWheel":"true","backgroundColor":"#777","backgroundImage":"","height":"auto","paddingLeft":"20","paddingRight":"20","controlsPosition":"bottom","duration":800,"soundEnable":"true","enableDownload":"true","enableAnnotation":"false","enableAnalytics":"false","webgl":"true","hard":"none","maxTextureSize":"1600","rangeChunkSize":"524288","zoomRatio":1.5,"stiffness":3,"pageMode":"0","singlePageMode":"0","pageSize":"0","autoPlay":"false","autoPlayDuration":5000,"autoPlayStart":"false","linkTarget":"2","sharePrefix":"dearflip-"};</script><meta name="generator" content="Elementor 3.11.5; features: e_dom_optimization, e_optimized_assets_loading, e_optimized_css_loading, a11y_improvements, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
@@ -1302,44 +1191,7 @@ const etlmsUtility = {"is_editor_mode":false}
 				}
 			//});
 		  };</script>
-		<style type="text/css" id="wp-custom-css">
-			.woocommerce div.product form.cart div.quantity {
-    display: none;   
-}
-
-.pmpro-message {
-	text-align:center;
-    background-color: #f7f7f7;
-    border: 1px solid #ccc;
-    padding: 50px;
-}
-
-.pmpro-message-title {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.pmpro-message-button {
-    margin-top: 20px;
-}
-
-.pmpro-message-link {
-    background-color: #0073aa;
-    border-radius: 5px;
-    color: #fff;
-    display: inline-block;
-	margin: 20px 30px;
-    padding: 10px 25px;
-    text-decoration: none;
-    transition: background-color 0.2s;
-}
-
-.pmpro-message-link:hover {
-    background-color: #d0001d;
-	color:#ffffff;
-}
-		</style>
-		<noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript><style id="wpforms-css-vars-root">
+<noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript><style id="wpforms-css-vars-root">
 				:root {
 					--wpforms-field-border-radius: 3px;
 --wpforms-field-background-color: #ffffff;
@@ -1371,8 +1223,9 @@ const etlmsUtility = {"is_editor_mode":false}
 				}
 			</style></head>
 
-<body class="page-template-default page page-id-16045 logged-in theme-consulting pmpro-body-has-access tutor-lms tutor-screen-frontend-dashboard woocommerce-no-js ehf-header ehf-footer ehf-template-consulting ehf-stylesheet-consulting site_layout_atlanta  header_transparent mobile_grid_landscape vc_sidebar_page eroom-enabled wpb-js-composer js-comp-ver-6.9.0 vc_responsive elementor-default elementor-kit-219 elementor-page elementor-page-16045">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
+<body class="page-template-default page page-id-16045 logged-in theme-consulting tutor-lms tutor-screen-frontend-dashboard woocommerce-no-js ehf-header ehf-footer ehf-template-consulting ehf-stylesheet-consulting site_layout_atlanta  header_transparent mobile_grid_landscape vc_sidebar_page eroom-enabled wpb-js-composer js-comp-ver-6.9.0 vc_responsive elementor-default elementor-kit-219 elementor-page elementor-page-16045">
+
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
     <div id="wrapper">
 
         <div id="page" class="hfeed site">
@@ -1424,7 +1277,7 @@ const etlmsUtility = {"is_editor_mode":false}
 	<li id="menu-item-17666" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17666 stm_col_width_default stm_mega_cols_inside_default stm_mega_col_width_banner_default"><a href="https://itstest.websinova.com/regulatory-compliance-box/">Regulatory &#038; Compliance Box</a></li>
 </ul>
 </li>
-<li id="menu-item-17052" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17052"><a href="https://itstest.websinova.com/product/book-a-session/">Book a Session</a></li>
+<li id="menu-item-17052" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-17052"><a href="https://itstest.websinova.com/#calendar">Book a Session</a></li>
 </ul></nav>
 		</div>
 				</div>
@@ -1450,7 +1303,7 @@ const etlmsUtility = {"is_editor_mode":false}
 			<div class="elementor-widget-wrap elementor-element-populated">
 								<div class="elementor-element elementor-element-fe070db elementor-menu-cart--empty-indicator-hide toggle-icon--cart-medium elementor-menu-cart--items-indicator-bubble elementor-menu-cart--cart-type-side-cart elementor-menu-cart--show-remove-button-yes elementor-widget elementor-widget-woocommerce-menu-cart" data-id="fe070db" data-element_type="widget" data-settings="{&quot;cart_type&quot;:&quot;side-cart&quot;,&quot;open_cart&quot;:&quot;click&quot;,&quot;automatically_open_cart&quot;:&quot;no&quot;}" data-widget_type="woocommerce-menu-cart.default">
 				<div class="elementor-widget-container">
-			<link rel="stylesheet" href="https://itstest.websinova.com/wp-content/plugins/elementor-pro/assets/css/widget-woocommerce.min.css">		<div class="elementor-menu-cart__wrapper">
+			<link rel="stylesheet" href="{% static 'css/widget-woocommerce.min.css' %}">		<div class="elementor-menu-cart__wrapper">
 							<div class="elementor-menu-cart__toggle_wrapper">
 					<div class="elementor-menu-cart__container elementor-lightbox" aria-hidden="true">
 						<div class="elementor-menu-cart__main" aria-hidden="true">
@@ -1461,7 +1314,7 @@ const etlmsUtility = {"is_editor_mode":false}
 					</div>
 							<div class="elementor-menu-cart__toggle elementor-button-wrapper">
 			<a id="elementor-menu-cart__toggle_button" href="#" class="elementor-menu-cart__toggle_button elementor-button elementor-size-sm" aria-expanded="false">
-				<span class="elementor-button-text">Free</span>
+				<span class="elementor-button-text"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>0.00</bdi></span></span>
 				<span class="elementor-button-icon">
 					<span class="elementor-button-icon-qty" data-counter="0">0</span>
 					<i class="eicon-cart-medium"></i>					<span class="elementor-screen-only">Cart</span>
@@ -1502,15 +1355,15 @@ const etlmsUtility = {"is_editor_mode":false}
 		<div class="tutor-row tutor-d-flex tutor-justify-between tutor-frontend-dashboard-header">
 			<div class="tutor-header-left-side tutor-dashboard-header tutor-col-md-6 tutor-d-flex tutor-align-center" style="border: none;">
 				<div class="tutor-dashboard-header-avatar">
-					<div class="tutor-avatar tutor-avatar-xl"><div class="tutor-ratio tutor-ratio-1x1"><span class="tutor-avatar-text">DD</span></div></div>				</div>
+					<div class="tutor-avatar tutor-avatar-xl"><div class="tutor-ratio tutor-ratio-1x1"><span class="tutor-avatar-text">{{ request.user.username|slice:":1"|capfirst }}</span></div></div>				</div>
 
 				<div class="tutor-user-info tutor-ml-24">
 											<div class="tutor-dashboard-header-display-name tutor-color-black">
 							<div class="tutor-fs-5 tutor-dashboard-header-greetings">
-								Hello,
+								Hello, {{ request.user.username}}
 							</div>
 							<div class="tutor-fs-4 tutor-fw-medium tutor-dashboard-header-username">
-								demo demo							</div>
+								{{ users.user_nicename }}							</div>
 						</div>
 										</div>
 			</div>
@@ -1519,132 +1372,26 @@ const etlmsUtility = {"is_editor_mode":false}
 									</div>
 			</div>
 		</div>
+		
+		
+		{% block active %}
+		
 
-		<div class="tutor-row tutor-frontend-dashboard-maincontent">
-			<div class="tutor-col-12 tutor-col-md-4 tutor-col-lg-3 tutor-dashboard-left-menu">
-				<ul class="tutor-dashboard-permalinks">
-												<li class='tutor-dashboard-menu-item tutor-dashboard-menu-index active'>
-								<a  href="https://itstest.websinova.com/dashboard/" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-									<span class='tutor-icon-dashboard tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-										Dashboard									</span>
-								</a>
-							</li>
-														<li class='tutor-dashboard-menu-item tutor-dashboard-menu-my-profile '>
-								<a  href="https://itstest.websinova.com/dashboard/my-profile" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-									<span class='tutor-icon-user-bold tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-										My Profile									</span>
-								</a>
-							</li>
-														<li class='tutor-dashboard-menu-item tutor-dashboard-menu-enrolled-courses '>
-								<a  href="https://itstest.websinova.com/dashboard/enrolled-courses" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-									<span class='tutor-icon-mortarboard-o tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-										Enrolled Courses									</span>
-								</a>
-							</li>
-														<li class='tutor-dashboard-menu-item tutor-dashboard-menu-purchase_history '>
-								<a  href="https://itstest.websinova.com/dashboard/purchase_history" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-									<span class='tutor-icon-cart-bold tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-										Order History									</span>
-								</a>
-							</li>
-														<li class='tutor-dashboard-menu-item tutor-dashboard-menu-my-compliance1 '>
-								<a  href="https://itstest.websinova.com/dashboard/my-compliance1" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-																		<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-										My Compliance1									</span>
-								</a>
-							</li>
-														<li class='tutor-dashboard-menu-item tutor-dashboard-menu-custom_Compliance '>
-								<a  href="//youtube.com" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-									<span class='tutor-icon-envelope tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-										My Compliance									</span>
-								</a>
-							</li>
-														<li class='tutor-dashboard-menu-item tutor-dashboard-menu-custom_Calendar '>
-								<a  href="//youtube.com" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-									<span class='tutor-icon-brand-google-calendar tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-										My Travel Calendar									</span>
-								</a>
-							</li>
-														<li class='tutor-dashboard-menu-item tutor-dashboard-menu-custom_documents '>
-								<a  href="//youtube.com" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-									<span class='tutor-icon-book-open tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-										My Documents									</span>
-								</a>
-							</li>
-														<li class='tutor-dashboard-menu-item tutor-dashboard-menu-custom_Taxes '>
-								<a  href="//youtube.com" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-									<span class='tutor-icon-grid-bold tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-										My Taxes									</span>
-								</a>
-							</li>
-														<li class='tutor-dashboard-menu-item tutor-dashboard-menu-custom_Remitances '>
-								<a  href="//youtube.com" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-									<span class='tutor-icon-badge-dollar tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-										My Remitances									</span>
-								</a>
-							</li>
-							<li class="tutor-dashboard-menu-divider"></li>							<li class='tutor-dashboard-menu-item tutor-dashboard-menu-settings '>
-								<a  href="https://itstest.websinova.com/dashboard/settings" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-									<span class='tutor-icon-gear tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-										Settings									</span>
-								</a>
-							</li>
-														<li class='tutor-dashboard-menu-item tutor-dashboard-menu-logout '>
-								<a data-no-instant href="https://itstest.websinova.com/dashboard/logout" class='tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black'>
-									<span class='tutor-icon-signout tutor-dashboard-menu-item-icon'></span>									<span class='tutor-dashboard-menu-item-text tutor-ml-12'>
-										Logout									</span>
-								</a>
-							</li>
-											</ul>
-			</div>
 
-			<div class="tutor-col-12 tutor-col-md-8 tutor-col-lg-9">
-				<div class="tutor-dashboard-content">
-					
-<div class="tutor-fs-5 tutor-fw-medium tutor-color-black tutor-capitalize-text tutor-mb-24 tutor-dashboard-title">Dashboard</div>
-<div class="tutor-dashboard-content-inner">
-		<div class="tutor-row tutor-gx-lg-4">
-		<div class="tutor-col-lg-6 tutor-col-xl-4 tutor-mb-16 tutor-mb-lg-32">
-			<div class="tutor-card">
-				<div class="tutor-d-flex tutor-flex-lg-column tutor-align-center tutor-text-lg-center tutor-px-12 tutor-px-lg-24 tutor-py-8 tutor-py-lg-32">
-					<span class="tutor-round-box tutor-mr-12 tutor-mr-lg-0 tutor-mb-lg-12">
-						<i class="tutor-icon-book-open" area-hidden="true"></i>
-					</span>
-					<div class="tutor-fs-3 tutor-fw-bold tutor-d-none tutor-d-lg-block">0</div>
-					<div class="tutor-fs-7 tutor-color-secondary">Enrolled Courses</div>
-					<div class="tutor-fs-4 tutor-fw-bold tutor-d-block tutor-d-lg-none tutor-ml-auto">0</div>
-				</div>
-			</div>
-		</div>
+	
 
-		<div class="tutor-col-lg-6 tutor-col-xl-4 tutor-mb-16 tutor-mb-lg-32">
-			<div class="tutor-card">
-				<div class="tutor-d-flex tutor-flex-lg-column tutor-align-center tutor-text-lg-center tutor-px-12 tutor-px-lg-24 tutor-py-8 tutor-py-lg-32">
-					<span class="tutor-round-box tutor-mr-12 tutor-mr-lg-0 tutor-mb-lg-12">
-						<i class="tutor-icon-mortarboard-o" area-hidden="true"></i>
-					</span>
-					<div class="tutor-fs-3 tutor-fw-bold tutor-d-none tutor-d-lg-block">0</div>
-					<div class="tutor-fs-7 tutor-color-secondary">Active Courses</div>
-					<div class="tutor-fs-4 tutor-fw-bold tutor-d-block tutor-d-lg-none tutor-ml-auto">0</div>
-				</div>
-			</div>
-		</div>
+{% endblock active %}
 
-		<div class="tutor-col-lg-6 tutor-col-xl-4 tutor-mb-16 tutor-mb-lg-32">
-			<div class="tutor-card">
-				<div class="tutor-d-flex tutor-flex-lg-column tutor-align-center tutor-text-lg-center tutor-px-12 tutor-px-lg-24 tutor-py-8 tutor-py-lg-32">
-					<span class="tutor-round-box tutor-mr-12 tutor-mr-lg-0 tutor-mb-lg-12">
-						<i class="tutor-icon-trophy" area-hidden="true"></i>
-					</span>
-					<div class="tutor-fs-3 tutor-fw-bold tutor-d-none tutor-d-lg-block">0</div>
-					<div class="tutor-fs-7 tutor-color-secondary">Completed Courses</div>
-					<div class="tutor-fs-4 tutor-fw-bold tutor-d-block tutor-d-lg-none tutor-ml-auto">0</div>
-				</div>
-			</div>
-		</div>
 
-			</div>
-</div>
+
+
+{% block 'content' %}
+
+
+
+{% endblock 'content' %}
+
+
 
 
 
@@ -1653,22 +1400,7 @@ const etlmsUtility = {"is_editor_mode":false}
 		</div>
 	</div>
 	<div id="tutor-dashboard-footer-mobile">
-		<div class="tutor-container">
-			<div class="tutor-row">
-									<a class="tutor-col-4 active" href="https://itstest.websinova.com/dashboard/">
-						<i class="ttr tutor-icon-dashboard"></i>
-						<span>Dashboard</span>
-					</a>
-									<a class="tutor-col-4 " href="https://itstest.websinova.com/dashboard/my-quiz-attempts/">
-						<i class="ttr tutor-icon-quiz-attempt"></i>
-						<span>Quiz Attempts</span>
-					</a>
-									<a class="tutor-col-4 " href="#">
-						<i class="ttr tutor-icon-hamburger-o tutor-dashboard-menu-toggler"></i>
-						<span>Menu</span>
-					</a>
-							</div>
-		</div>
+		
 	</div>
 </div>
 
@@ -1686,11 +1418,11 @@ const etlmsUtility = {"is_editor_mode":false}
 								<div class="elementor-element elementor-element-c55a5b6 elementor-widget elementor-widget-vc_cta" data-id="c55a5b6" data-element_type="widget" data-widget_type="vc_cta.default">
 				<div class="elementor-widget-container">
 			
-<div class="ce_cta ce_cta_f66197ab1ad4548e7a60dfd94611f963 ce_text_left third_bg_color add_button_right btn_align_right btn_button_block_true btn_has_icon btn_has_icon_on_the_right" id="">
+<div class="ce_cta ce_cta_b8f4593f8192f513545977a7e420fc5f ce_text_left third_bg_color add_button_right btn_align_right btn_button_block_true btn_has_icon btn_has_icon_on_the_right" id="">
 
     <div class="ce_cta__content">
         <div class="ce_cta__content__header">
-            <h2  class='ce_cta__content__title '>Looking for One-stop Solution for Expatriates?</h2>                    </div>
+            <h2  class='ce_cta__content__title '>One-stop Solution for Expatriates?</h2>                    </div>
 
         
     </div>
@@ -1725,8 +1457,8 @@ const etlmsUtility = {"is_editor_mode":false}
 				<div class="elementor-widget-container">
 			
 		<div class="consulting-logo">
-						<a href=&quot;https://taxpertpro.com/&quot;>
-							<img src="https://itstest.websinova.com/wp-content/uploads/2022/01/Logo-white_1.png" alt="Testing Website" />
+						<a href=&quot;https://itstest.websinova.com&quot;>
+							<img src="https://itstest.websinova.com/wp-content/uploads/2023/03/MME_Logo-removebg-preview-e1680080439318.png" alt="Testing Website" />
 						</a>
 					</div>
 
@@ -1766,9 +1498,15 @@ const etlmsUtility = {"is_editor_mode":false}
 			<div class="elementor-widget-wrap elementor-element-populated">
 								<div class="elementor-element elementor-element-99ebcb9 elementor-widget elementor-widget-sidebar" data-id="99ebcb9" data-element_type="widget" data-widget_type="sidebar.default">
 				<div class="elementor-widget-container">
-			<section id="nav_menu-3" class="widget widget_nav_menu"><h4 class="widget_title no_stripe">Links</h4><div class="menu-extra-links-container"><ul id="menu-extra-links" class="menu"><li id="menu-item-18954" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-18954"><a href="https://itstest.websinova.com/" onClick="return true">Home</a></li>
-<li id="menu-item-18955" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18955"><a href="https://itstest.websinova.com/global-deployment-solutions/" onClick="return true">Global Deployment Solutions</a></li>
-<li id="menu-item-18956" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18956"><a href="https://itstest.websinova.com/portfolio-with-filter/" onClick="return true">Resource Library</a></li>
+			<section id="nav_menu-2" class="widget widget_nav_menu"><h4 class="widget_title no_stripe">extra links</h4><div class="menu-extra-links-container"><ul id="menu-extra-links" class="menu"><li id="menu-item-15599" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15599"><a href="https://itstest.websinova.com/company-overview/" onClick="return true">About us</a></li>
+<li id="menu-item-15600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15600"><a href="https://itstest.websinova.com/blog/" onClick="return true">News</a></li>
+<li id="menu-item-15601" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15601"><a href="https://itstest.websinova.com/contact-us/" onClick="return true">Contacts</a></li>
+<li id="menu-item-15602" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15602"><a href="https://itstest.websinova.com/testimonials-page/" onClick="return true">Testimonials</a></li>
+<li id="menu-item-15603" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15603"><a href="https://itstest.websinova.com/typography/" onClick="return true">Typography</a></li>
+<li id="menu-item-15604" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15604"><a href="https://itstest.websinova.com/services-grid/" onClick="return true">Services</a></li>
+<li id="menu-item-15605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15605"><a href="https://itstest.websinova.com/company-overview/careers/" onClick="return true">Careers</a></li>
+<li id="menu-item-15606" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15606"><a href="https://itstest.websinova.com/company-overview/our-team-grid/" onClick="return true">Our team</a></li>
+<li id="menu-item-15607" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15607"><a href="https://itstest.websinova.com/company-overview/our-approach/" onClick="return true">Our approach</a></li>
 </ul></div></section>		</div>
 				</div>
 					</div>
@@ -1778,7 +1516,13 @@ const etlmsUtility = {"is_editor_mode":false}
 								<div class="elementor-element elementor-element-4037eae elementor-widget elementor-widget-heading" data-id="4037eae" data-element_type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
 			<style>/*! elementor - v3.11.5 - 14-03-2023 */
-.elementor-heading-title{padding:0;margin:0;line-height:1}.elementor-widget-heading .elementor-heading-title[class*=elementor-size-]>a{color:inherit;font-size:inherit;line-height:inherit}.elementor-widget-heading .elementor-heading-title.elementor-size-small{font-size:15px}.elementor-widget-heading .elementor-heading-title.elementor-size-medium{font-size:19px}.elementor-widget-heading .elementor-heading-title.elementor-size-large{font-size:29px}.elementor-widget-heading .elementor-heading-title.elementor-size-xl{font-size:39px}.elementor-widget-heading .elementor-heading-title.elementor-size-xxl{font-size:59px}</style><h2 class="elementor-heading-title elementor-size-default">Stay updated with mme</h2>		</div>
+.elementor-heading-title{padding:0;margin:0;line-height:1}.elementor-widget-heading .elementor-heading-title[class*=elementor-size-]>a{color:inherit;font-size:inherit;line-height:inherit}.elementor-widget-heading .elementor-heading-title.elementor-size-small{font-size:15px}.elementor-widget-heading .elementor-heading-title.elementor-size-medium{font-size:19px}.elementor-widget-heading .elementor-heading-title.elementor-size-large{font-size:29px}.elementor-widget-heading .elementor-heading-title.elementor-size-xl{font-size:39px}.elementor-widget-heading .elementor-heading-title.elementor-size-xxl{font-size:59px}</style><h2 class="elementor-heading-title elementor-size-default">Subscribe</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-b3ef9b3 elementor-widget elementor-widget-stm_newsletter" data-id="b3ef9b3" data-element_type="widget" data-widget_type="stm_newsletter.default">
+				<div class="elementor-widget-container">
+					<div class="consulting_newsletter_widget">
+			<div class="consulting_newsletter_widget_notice">No contact forms found.</div>		</div>
+				</div>
 				</div>
 				<div class="elementor-element elementor-element-5d2718e elementor-widget elementor-widget-stm_newsletter" data-id="5d2718e" data-element_type="widget" data-widget_type="stm_newsletter.default">
 				<div class="elementor-widget-container">
@@ -1805,31 +1549,13 @@ const etlmsUtility = {"is_editor_mode":false}
 </p>
 <p>
   <button type="submit"><i class="fa fa-rss"></i></button>
-</p></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1681046225" /><input type="hidden" name="_mc4wp_form_id" value="13205" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" /><div class="mc4wp-response"></div></form><!-- / Mailchimp for WordPress Plugin -->		</div>
+</p></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1680606522" /><input type="hidden" name="_mc4wp_form_id" value="13205" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" /><div class="mc4wp-response"></div></form><!-- / Mailchimp for WordPress Plugin -->		</div>
 				</div>
 				</div>
 				<div class="elementor-element elementor-element-cbb161f elementor-widget elementor-widget-text-editor" data-id="cbb161f" data-element_type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 							<p>Get latest updates and offers.</p>
 						</div>
-				</div>
-				<div class="elementor-element elementor-element-319ad2a elementor-widget elementor-widget-stm_anchors_link" data-id="319ad2a" data-element_type="widget" data-widget_type="stm_anchors_link.default">
-				<div class="elementor-widget-container">
-			
-			<div class="consulting-anchor_link_wrapper">
-				<a href="https://itstest.websinova.com/privacy-policy-3/" target="_blank" class="consulting-anchor_link">Privacy Policy <i class="stm-right-arrow"></i></a>
-			</div>
-
-				</div>
-				</div>
-				<div class="elementor-element elementor-element-b9cf652 elementor-widget elementor-widget-stm_anchors_link" data-id="b9cf652" data-element_type="widget" data-widget_type="stm_anchors_link.default">
-				<div class="elementor-widget-container">
-			
-			<div class="consulting-anchor_link_wrapper">
-				<a href="https://itstest.websinova.com/terms-and-conditions" target="_blank" class="consulting-anchor_link">Terms and Conditions <i class="stm-right-arrow"></i></a>
-			</div>
-
-				</div>
 				</div>
 					</div>
 		</div>
@@ -1853,7 +1579,7 @@ const etlmsUtility = {"is_editor_mode":false}
 								<div class="elementor-element elementor-element-7bb8d0f elementor-view-stacked elementor-widget__width-auto elementor-shape-circle elementor-widget elementor-widget-icon" data-id="7bb8d0f" data-element_type="widget" data-widget_type="icon.default">
 				<div class="elementor-widget-container">
 					<div class="elementor-icon-wrapper">
-			<a class="elementor-icon" href="tel:+919326002456" target="_blank">
+			<a class="elementor-icon" href="https://www.facebook.com/stylemixthemes/" target="_blank">
 			<i aria-hidden="true" class=" stm-contact_phone"></i>			</a>
 		</div>
 				</div>
@@ -1861,23 +1587,15 @@ const etlmsUtility = {"is_editor_mode":false}
 				<div class="elementor-element elementor-element-daa67cb elementor-view-stacked elementor-widget__width-auto elementor-shape-circle elementor-widget elementor-widget-icon" data-id="daa67cb" data-element_type="widget" data-widget_type="icon.default">
 				<div class="elementor-widget-container">
 					<div class="elementor-icon-wrapper">
-			<a class="elementor-icon" href="https://www.linkedin.com/company/taxpert-global-solutions/">
+			<a class="elementor-icon" href="https://twitter.com/stylemix_themes">
 			<i aria-hidden="true" class="fab fa-linkedin"></i>			</a>
-		</div>
-				</div>
-				</div>
-				<div class="elementor-element elementor-element-5fccf04 elementor-view-stacked elementor-widget__width-auto elementor-shape-circle elementor-widget elementor-widget-icon" data-id="5fccf04" data-element_type="widget" data-widget_type="icon.default">
-				<div class="elementor-widget-container">
-					<div class="elementor-icon-wrapper">
-			<a class="elementor-icon" href="https://instagram.com/managemyexpat?igshid=ZDdkNTZiNTM=%20">
-			<i aria-hidden="true" class="fab fa-instagram"></i>			</a>
 		</div>
 				</div>
 				</div>
 				<div class="elementor-element elementor-element-cef8b33 elementor-view-stacked elementor-widget__width-auto elementor-shape-circle elementor-widget elementor-widget-icon" data-id="cef8b33" data-element_type="widget" data-widget_type="icon.default">
 				<div class="elementor-widget-container">
 					<div class="elementor-icon-wrapper">
-			<a class="elementor-icon" href="http://wa.me/+919769033172">
+			<a class="elementor-icon" href="https://www.instagram.com/stylemixthemes/">
 			<i aria-hidden="true" class="fab fa-whatsapp"></i>			</a>
 		</div>
 				</div>
@@ -1902,8 +1620,7 @@ const etlmsUtility = {"is_editor_mode":false}
 			window.RS_MODULES.moduleWaiting = window.RS_MODULES.moduleWaiting || {};
 			window.RS_MODULES.type = 'compiled';
 		</script>
-				<!-- Memberships powered by Paid Memberships Pro v2.10.3. -->
-	        <script type="text/javascript">
+		        <script type="text/javascript">
 			var xlwcty_info = [];        </script>
 		<script>(function() {function maybePrefixUrlField () {
   const value = this.value.trim()
@@ -3339,6 +3056,16 @@ var sbiajaxurl = "https://itstest.websinova.com/wp-admin/admin-ajax.php";
 		</div>
 	</div>
 </div>
+
+
+<script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</script>
 <script type="text/template" id="tmpl-variation-template">
     <div class="woocommerce-variation-description">
         }
@@ -3353,11 +3080,12 @@ var sbiajaxurl = "https://itstest.websinova.com/wp-admin/admin-ajax.php";
     </div>
 </script>
 <script type="text/template" id="tmpl-unavailable-variation-template">
+
     <p>Sorry, this product is unavailable. Please choose a different combination.</p>
 </script>
-<link rel='stylesheet' id='cew_cta-css' href='https://itstest.websinova.com/wp-content/themes/consulting/assets/css/layouts/global_styles/el_tta.css?ver=1681046225' type='text/css' media='all' />
+<link rel='stylesheet' id='cew_cta-css' href='https://itstest.websinova.com/wp-content/themes/consulting/assets/css/layouts/global_styles/el_tta.css?ver=1680606521' type='text/css' media='all' />
 <style id='cew_cta-inline-css' type='text/css'>
-.ce_cta_f66197ab1ad4548e7a60dfd94611f963 .ce_cta__content__title, .ce_cta_f66197ab1ad4548e7a60dfd94611f963 .ce_cta__content__title a {font-size : 30px;line-height : 42px;text-align : left;} .ce_cta_f66197ab1ad4548e7a60dfd94611f963 .ce_cta__content__subtitle, .ce_cta_f66197ab1ad4548e7a60dfd94611f963 .ce_cta__content__subtitle a {text-align : left;} 
+.ce_cta_b8f4593f8192f513545977a7e420fc5f .ce_cta__content__title, .ce_cta_b8f4593f8192f513545977a7e420fc5f .ce_cta__content__title a {font-size : 30px;line-height : 42px;text-align : left;} .ce_cta_b8f4593f8192f513545977a7e420fc5f .ce_cta__content__subtitle, .ce_cta_b8f4593f8192f513545977a7e420fc5f .ce_cta__content__subtitle a {text-align : left;} 
 </style>
 <link rel='stylesheet' id='rs-plugin-settings-css' href='https://itstest.websinova.com/wp-content/plugins/revslider/public/assets/css/rs6.css?ver=6.5.19' type='text/css' media='all' />
 <style id='rs-plugin-settings-inline-css' type='text/css'>
@@ -3369,8 +3097,8 @@ var sbiajaxurl = "https://itstest.websinova.com/wp-admin/admin-ajax.php";
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/betterdocs/public/js/simplebar.js?ver=2.3.6' id='simplebar-js'></script>
 <script type='text/javascript' id='betterdocs-js-extra'>
 /* <![CDATA[ */
-var betterdocspublic = {"ajax_url":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php","post_id":"16045","copy_text":"Copied","sticky_toc_offset":"100","nonce":"9df1c984bc"};
-var betterdocspublic = {"ajax_url":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php","post_id":"16045","copy_text":"Copied","sticky_toc_offset":"100","nonce":"9df1c984bc","search_letter_limit":"3","FEEDBACK":{"DISPLAY":true,"TEXT":"How did you feel?","SUCCESS":"Thanks for your feedback","URL":"https:\/\/itstest.websinova.com?rest_route=\/betterdocs\/feedback"}};
+var betterdocspublic = {"ajax_url":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php","post_id":"16045","copy_text":"Copied","sticky_toc_offset":"100","nonce":"15c2090e0b"};
+var betterdocspublic = {"ajax_url":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php","post_id":"16045","copy_text":"Copied","sticky_toc_offset":"100","nonce":"15c2090e0b","search_letter_limit":"3","FEEDBACK":{"DISPLAY":true,"TEXT":"How did you feel?","SUCCESS":"Thanks for your feedback","URL":"https:\/\/itstest.websinova.com?rest_route=\/betterdocs\/feedback"}};
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/betterdocs/public/js/betterdocs-public.js?ver=2.3.6' id='betterdocs-js'></script>
@@ -3405,13 +3133,9 @@ var option = {"mystickyClass":".menu-main-header-container","activationHeight":"
 <script type='text/javascript' src='https://itstest.websinova.com/wp-includes/js/dist/hooks.min.js?ver=4169d3cf8e8d95a3d6d5' id='wp-hooks-js'></script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-includes/js/dist/i18n.min.js?ver=9e794f35a71bb98672ae' id='wp-i18n-js'></script>
 <script type='text/javascript' id='wp-i18n-js-after'>
-wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+wp.i18n.setLocaleData( { 'text directionltr': [ 'ltr' ] } );
 </script>
-<script type='text/javascript' id='tutor-script-js-extra'>
-/* <![CDATA[ */
-var _tutorobject = {"ajaxurl":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php","home_url":"https:\/\/itstest.websinova.com","site_title":"Testing Website","base_path":"\/","tutor_url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/","tutor_pro_url":null,"nonce_key":"_tutor_nonce","_tutor_nonce":"67839807af","loading_icon_url":"https:\/\/itstest.websinova.com\/wp-admin\/images\/wpspin_light.gif","placeholder_img_src":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/images\/placeholder.svg","enable_lesson_classic_editor":"1","tutor_frontend_dashboard_url":"https:\/\/itstest.websinova.com\/dashboard\/","wp_date_format":"MMMM d, yyyy","is_admin":"","is_admin_bar_showing":"","addons_data":[{"name":"BuddyPress","description":"Discuss about course and share your knowledge with your friends through BuddyPress","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/buddypress\/thumbnail.png"},{"name":"Gradebook","description":"Shows student progress from assignment and quiz","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/gradebook\/thumbnail.png"},{"name":"Content Drip","description":"Unlock lessons by schedule or when the student meets specific condition.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/content-drip\/thumbnail.png"},{"name":"Enrollment","description":"Take advanced control on enrollment. Enroll the student manually.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/enrollments\/thumbnail.png"},{"name":"WooCommerce Subscriptions","description":"Capture Residual Revenue with Recurring Payments.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/wc-subscriptions\/thumbnail.png"},{"name":"Paid Memberships Pro","description":"Maximize revenue by selling membership access to all of your courses.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/pmpro\/thumbnail.png"},{"name":"Restrict Content Pro","description":"Unlock Course depending on Restrict Content Pro Plugin Permission.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/restrict-content-pro\/thumbnail.png"},{"name":"Tutor Assignments","description":"Tutor assignments is a great way to assign tasks to students.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-assignments\/thumbnail.png"},{"name":"Tutor Certificate","description":"Students will be able to download a certificate after course completion.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-certificate\/thumbnail.png"},{"name":"Tutor Course Attachments","description":"Add unlimited attachments\/ private files to any Tutor course","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-course-attachments\/thumbnail.png"},{"name":"Tutor Course Preview","description":"Unlock some lessons for students before enrollment.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-course-preview\/thumbnail.png"},{"name":"Tutor E-Mail","description":"Send email on various tutor events","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-email\/thumbnail.png"},{"name":"Tutor Multi Instructors","description":"Start a course with multiple instructors by Tutor Multi Instructors","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-multi-instructors\/thumbnail.png"},{"name":"Tutor Prerequisites","description":"Specific course you must complete before you can enroll new course by Tutor Prerequisites","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-prerequisites\/thumbnail.png"},{"name":"Tutor Report","description":"Check your course performance through Tutor Report stats.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-report\/thumbnail.png"},{"name":"Quiz Export\/Import","description":"Save time by exporting\/importing quiz data with easy options.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/quiz-import-export\/thumbnail.png"},{"name":"Tutor Zoom Integration","description":"Connect Tutor LMS with Zoom to host live online classes. Students can attend live classes right from the lesson page.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-zoom\/thumbnail.png"},{"name":"Tutor Google Meet Integration","description":"Connect Tutor LMS with Google Meet to host live online classes. Students can attend live classes right from the lesson page.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/google-meet\/thumbnail.png"},{"name":"Google Classroom Integration","description":"Helps connect Google Classrooms with Tutor LMS courses, allowing you to use features like Classroom streams and files directly from the Tutor LMS course.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/google-classroom\/thumbnail.png"},{"name":"Calendar","description":"Allow students to see everything in a calendar view in the front dashboard.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-calendar\/thumbnail.png"},{"name":"Notifications","description":"Get On Site and Push Notifications on specified tutor events.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-notifications\/thumbnail.png"},{"name":"Weglot","description":"Translate & manage multilingual courses for global reach with full edit control.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-weglot\/thumbnail.png"},{"name":"WPML Multilingual CMS","description":"Create multilingual courses, lessons, dashboard and more for a global audience.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-wpml\/thumbnail.png"}],"current_user":{"data":{"ID":"13","user_login":"demo1","user_pass":"$P$By5ZxHyzvxRLTbXY6oONMHJrPCcLUc1","user_nicename":"demo1","user_email":"demo99@gmail.com","user_url":"","user_registered":"2023-04-09 13:17:04","user_activation_key":"","user_status":"0","display_name":"demo demo","last_login":null,"membership_level":false,"membership_levels":[]},"ID":13,"caps":{"subscriber":true},"cap_key":"wp_capabilities","roles":["subscriber"],"allcaps":{"read":true,"level_0":true,"subscriber":true},"filter":null},"content_change_event":"tutor_content_changed_event","is_tutor_course_edit":"","assignment_max_file_allowed":"0","current_page":"","quiz_answer_display_time":"2000","is_ssl":"1","course_list_page_url":"https:\/\/itstest.websinova.com\/wp-admin\/admin.php?page=tutor","course_post_type":"courses"};
-/* ]]> */
-</script>
+
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/tutor/assets/js/tutor.min.js?ver=2.1.8' id='tutor-script-js'></script>
 <script type='text/javascript' id='quicktags-js-extra'>
 /* <![CDATA[ */
@@ -3437,8 +3161,8 @@ var _wpMediaModelsL10n = {"settings":{"ajaxurl":"\/wp-admin\/admin-ajax.php","po
 <script type='text/javascript' src='https://itstest.websinova.com/wp-includes/js/media-models.min.js?ver=6.1.1' id='media-models-js'></script>
 <script type='text/javascript' id='wp-plupload-js-extra'>
 /* <![CDATA[ */
-var pluploadL10n = {"queue_limit_exceeded":"You have attempted to queue too many files.","file_exceeds_size_limit":"%s exceeds the maximum upload size for this site.","zero_byte_file":"This file is empty. Please try another.","invalid_filetype":"Sorry, you are not allowed to upload this file type.","not_an_image":"This file is not an image. Please try another.","image_memory_exceeded":"Memory exceeded. Please try another smaller file.","image_dimensions_exceeded":"This is larger than the maximum size. Please try another.","default_error":"An error occurred in the upload. Please try again later.","missing_upload_url":"There was a configuration error. Please contact the server administrator.","upload_limit_exceeded":"You may only upload 1 file.","http_error":"Unexpected response from the server. The file may have been uploaded successfully. Check in the Media Library or reload the page.","http_error_image":"The server cannot process the image. This can happen if the server is busy or does not have enough resources to complete the task. Uploading a smaller image may help. Suggested maximum size is 2560 pixels.","upload_failed":"Upload failed.","big_upload_failed":"Please try uploading this file with the %1$sbrowser uploader%2$s.","big_upload_queued":"%s exceeds the maximum upload size for the multi-file uploader when used in your browser.","io_error":"IO error.","security_error":"Security error.","file_cancelled":"File canceled.","upload_stopped":"Upload stopped.","dismiss":"Dismiss","crunching":"Crunching\u2026","deleted":"moved to the Trash.","error_uploading":"\u201c%s\u201d has failed to upload.","unsupported_image":"This image cannot be displayed in a web browser. For best results convert it to JPEG before uploading.","noneditable_image":"This image cannot be processed by the web server. Convert it to JPEG or PNG before uploading.","file_url_copied":"The file URL has been copied to your clipboard"};
-var _wpPluploadSettings = {"defaults":{"file_data_name":"async-upload","url":"\/wp-admin\/async-upload.php","filters":{"max_file_size":"1073741824b","mime_types":[{"extensions":"jpg,jpeg,jpe,gif,png,bmp,tiff,tif,webp,ico,heic,asf,asx,wmv,wmx,wm,avi,divx,flv,mov,qt,mpeg,mpg,mpe,mp4,m4v,ogv,webm,mkv,3gp,3gpp,3g2,3gp2,txt,asc,c,cc,h,srt,csv,tsv,ics,rtx,css,vtt,dfxp,mp3,m4a,m4b,aac,ra,ram,wav,ogg,oga,flac,mid,midi,wma,wax,mka,rtf,pdf,class,tar,zip,gz,gzip,rar,7z,psd,xcf,doc,pot,pps,ppt,wri,xla,xls,xlt,xlw,mdb,mpp,docx,docm,dotx,dotm,xlsx,xlsm,xlsb,xltx,xltm,xlam,pptx,pptm,ppsx,ppsm,potx,potm,ppam,sldx,sldm,onetoc,onetoc2,onetmp,onepkg,oxps,xps,odt,odp,ods,odg,odc,odb,odf,wp,wpd,key,numbers,pages,svg"}]},"heic_upload_error":true,"multipart_params":{"action":"upload-attachment","_wpnonce":"5abc8d8903"}},"browser":{"mobile":false,"supported":true},"limitExceeded":false};
+var pluploadL10n = {"queue_limit_exceeded":"You have attempted to queue too many files.","file_exceeds_size_limit":"%s exceeds the maximum upload size for this site.","zero_byte_file":"This file is empty. Please try another.","invalid_filetype":"Sorry, you are not allowed to upload this file type.","not_an_image":"This file is not an image. Please try another.","image_memory_exceeded":"Memory exceeded. Please try another smaller file.","image_dimensions_exceeded":"This is larger than the maximum size. Please try another.","default_error":"An error occurred in the upload. Please try again later.","missing_upload_url":"There was a configuration error. Please contact the server administrator.","upload_limit_exceeded":"You may only upload 1 file.","http_error":"Unexpected response from the server. The file may have been uploaded successfully. Check in the Media Library or reload the page.","http_error_image":"The server cannot process the image. This can happen if the server is busy or does not have enough resources to complete the task. Uploading a smaller image may help. Suggested maximum size is 2560 pixels.","upload_failed":"Upload failed.","big_upload_failed":"Please try uploading this file with the %1$sbrowser uploader%2$s.","big_upload_queued":"%s exceeds the maximum upload size for the multi-file uploader when used in your browser.","io_error":"IO error.","security_error":"Security error.","file_cancelled":"File canceled.","upload_stopped":"Upload stopped.","dismiss":"Dismiss","crunching":"Crunching…","deleted":"moved to the Trash.","error_uploading":"“%s” has failed to upload.","unsupported_image":"This image cannot be displayed in a web browser. For best results convert it to JPEG before uploading.","noneditable_image":"This image cannot be processed by the web server. Convert it to JPEG or PNG before uploading.","file_url_copied":"The file URL has been copied to your clipboard"};
+var _wpPluploadSettings = {"defaults":{"file_data_name":"async-upload","url":"\/wp-admin\/async-upload.php","filters":{"max_file_size":"1073741824b","mime_types":[{"extensions":"jpg,jpeg,jpe,gif,png,bmp,tiff,tif,webp,ico,heic,asf,asx,wmv,wmx,wm,avi,divx,flv,mov,qt,mpeg,mpg,mpe,mp4,m4v,ogv,webm,mkv,3gp,3gpp,3g2,3gp2,txt,asc,c,cc,h,srt,csv,tsv,ics,rtx,css,vtt,dfxp,mp3,m4a,m4b,aac,ra,ram,wav,ogg,oga,flac,mid,midi,wma,wax,mka,rtf,pdf,class,tar,zip,gz,gzip,rar,7z,psd,xcf,doc,pot,pps,ppt,wri,xla,xls,xlt,xlw,mdb,mpp,docx,docm,dotx,dotm,xlsx,xlsm,xlsb,xltx,xltm,xlam,pptx,pptm,ppsx,ppsm,potx,potm,ppam,sldx,sldm,onetoc,onetoc2,onetmp,onepkg,oxps,xps,odt,odp,ods,odg,odc,odb,odf,wp,wpd,key,numbers,pages,svg"}]},"heic_upload_error":true,"multipart_params":{"action":"upload-attachment","_wpnonce":"2305e16833"}},"browser":{"mobile":false,"supported":true},"limitExceeded":false};
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-includes/js/plupload/wp-plupload.min.js?ver=6.1.1' id='wp-plupload-js'></script>
@@ -3458,7 +3182,7 @@ var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPr
 <script type='text/javascript' src='https://itstest.websinova.com/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=6.1.1' id='wp-mediaelement-js'></script>
 <script type='text/javascript' id='wp-api-request-js-extra'>
 /* <![CDATA[ */
-var wpApiSettings = {"root":"https:\/\/itstest.websinova.com\/wp-json\/","nonce":"5a7377f5c3","versionString":"wp\/v2\/"};
+var wpApiSettings = {"root":"https:\/\/itstest.websinova.com\/wp-json\/","nonce":"87d4e222fb","versionString":"wp\/v2\/"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-includes/js/api-request.min.js?ver=6.1.1' id='wp-api-request-js'></script>
@@ -3466,7 +3190,12 @@ var wpApiSettings = {"root":"https:\/\/itstest.websinova.com\/wp-json\/","nonce"
 <script type='text/javascript' src='https://itstest.websinova.com/wp-includes/js/dist/a11y.min.js?ver=ecce20f002eda4c19664' id='wp-a11y-js'></script>
 <script type='text/javascript' id='media-views-js-extra'>
 /* <![CDATA[ */
-var _wpMediaViewsL10n = {"mediaFrameDefaultTitle":"Media","url":"URL","addMedia":"Add media","search":"Search","select":"Select","cancel":"Cancel","update":"Update","replace":"Replace","remove":"Remove","back":"Back","selected":"%d selected","dragInfo":"Drag and drop to reorder media files.","uploadFilesTitle":"Upload files","uploadImagesTitle":"Upload images","mediaLibraryTitle":"Media Library","insertMediaTitle":"Add media","createNewGallery":"Create a new gallery","createNewPlaylist":"Create a new playlist","createNewVideoPlaylist":"Create a new video playlist","returnToLibrary":"\u2190 Go to library","allMediaItems":"All media items","allDates":"All dates","noItemsFound":"No items found.","insertIntoPost":"Insert into post","unattached":"Unattached","mine":"Mine","trash":"Trash","uploadedToThisPost":"Uploaded to this post","warnDelete":"You are about to permanently delete this item from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete.","warnBulkDelete":"You are about to permanently delete these items from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete.","warnBulkTrash":"You are about to trash these items.\n  'Cancel' to stop, 'OK' to delete.","bulkSelect":"Bulk select","trashSelected":"Move to Trash","restoreSelected":"Restore from Trash","deletePermanently":"Delete permanently","errorDeleting":"Error in deleting the attachment.","apply":"Apply","filterByDate":"Filter by date","filterByType":"Filter by type","searchLabel":"Search","searchMediaLabel":"Search media","searchMediaPlaceholder":"Search media items...","mediaFound":"Number of media items found: %d","noMedia":"No media items found.","noMediaTryNewSearch":"No media items found. Try a different search.","attachmentDetails":"Attachment details","insertFromUrlTitle":"Insert from URL","setFeaturedImageTitle":"Featured image","setFeaturedImage":"Set featured image","createGalleryTitle":"Create gallery","editGalleryTitle":"Edit gallery","cancelGalleryTitle":"\u2190 Cancel gallery","insertGallery":"Insert gallery","updateGallery":"Update gallery","addToGallery":"Add to gallery","addToGalleryTitle":"Add to gallery","reverseOrder":"Reverse order","imageDetailsTitle":"Image details","imageReplaceTitle":"Replace image","imageDetailsCancel":"Cancel edit","editImage":"Edit image","chooseImage":"Choose image","selectAndCrop":"Select and crop","skipCropping":"Skip cropping","cropImage":"Crop image","cropYourImage":"Crop your image","cropping":"Cropping\u2026","suggestedDimensions":"Suggested image dimensions: %1$s by %2$s pixels.","cropError":"There has been an error cropping your image.","audioDetailsTitle":"Audio details","audioReplaceTitle":"Replace audio","audioAddSourceTitle":"Add audio source","audioDetailsCancel":"Cancel edit","videoDetailsTitle":"Video details","videoReplaceTitle":"Replace video","videoAddSourceTitle":"Add video source","videoDetailsCancel":"Cancel edit","videoSelectPosterImageTitle":"Select poster image","videoAddTrackTitle":"Add subtitles","playlistDragInfo":"Drag and drop to reorder tracks.","createPlaylistTitle":"Create audio playlist","editPlaylistTitle":"Edit audio playlist","cancelPlaylistTitle":"\u2190 Cancel audio playlist","insertPlaylist":"Insert audio playlist","updatePlaylist":"Update audio playlist","addToPlaylist":"Add to audio playlist","addToPlaylistTitle":"Add to Audio Playlist","videoPlaylistDragInfo":"Drag and drop to reorder videos.","createVideoPlaylistTitle":"Create video playlist","editVideoPlaylistTitle":"Edit video playlist","cancelVideoPlaylistTitle":"\u2190 Cancel video playlist","insertVideoPlaylist":"Insert video playlist","updateVideoPlaylist":"Update video playlist","addToVideoPlaylist":"Add to video playlist","addToVideoPlaylistTitle":"Add to video Playlist","filterAttachments":"Filter media","attachmentsList":"Media list","settings":{"tabs":[],"tabUrl":"https:\/\/itstest.websinova.com\/wp-admin\/media-upload.php?chromeless=1","mimeTypes":{"image":"Images","audio":"Audio","video":"Video","application\/msword,application\/vnd.openxmlformats-officedocument.wordprocessingml.document,application\/vnd.ms-word.document.macroEnabled.12,application\/vnd.ms-word.template.macroEnabled.12,application\/vnd.oasis.opendocument.text,application\/vnd.apple.pages,application\/pdf,application\/vnd.ms-xpsdocument,application\/oxps,application\/rtf,application\/wordperfect,application\/octet-stream":"Documents","application\/vnd.apple.numbers,application\/vnd.oasis.opendocument.spreadsheet,application\/vnd.ms-excel,application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application\/vnd.ms-excel.sheet.macroEnabled.12,application\/vnd.ms-excel.sheet.binary.macroEnabled.12":"Spreadsheets","application\/x-gzip,application\/rar,application\/x-tar,application\/zip,application\/x-7z-compressed":"Archives"},"captions":true,"nonce":{"sendToEditor":"ba5521875c"},"post":{"id":0},"defaultProps":{"link":"none","align":"","size":""},"attachmentCounts":{"audio":1,"video":1},"oEmbedProxyUrl":"https:\/\/itstest.websinova.com\/wp-json\/oembed\/1.0\/proxy","embedExts":["mp3","ogg","flac","m4a","wav","mp4","m4v","webm","ogv","flv"],"embedMimes":{"mp3":"audio\/mpeg","ogg":"audio\/ogg","flac":"audio\/flac","m4a":"audio\/mpeg","wav":"audio\/wav","mp4":"video\/mp4","m4v":"video\/mp4","webm":"video\/webm","ogv":"video\/ogg","flv":"video\/x-flv"},"contentWidth":1120,"months":[{"year":"2023","month":"4","text":"April 2023"},{"year":"2023","month":"3","text":"March 2023"}],"mediaTrash":0,"infiniteScrolling":0}};
+var _wpMediaViewsL10n = {"mediaFrameDefaultTitle":"Media","url":"URL","addMedia":"Add media","search":"Search","select":"Select","cancel":"Cancel","update":"Update","replace":"Replace","remove":"Remove","back":"Back","selected":"%d selected","dragInfo":"Drag and drop to reorder media files.","uploadFilesTitle":"Upload files","uploadImagesTitle":"Upload images","mediaLibraryTitle":"Media Library","insertMediaTitle":"Add media","createNewGallery":"Create a new gallery","createNewPlaylist":"Create a new playlist","createNewVideoPlaylist":"Create a new video playlist","returnToLibrary":"← Go to library","allMediaItems":"All media items","allDates":"All dates","noItemsFound":"No items found.","insertIntoPost":"Insert into post","unattached":"Unattached","mine":"Mine","trash":"Trash","uploadedToThisPost":"Uploaded to this post","warnDelete":"You are about to permanently delete this item from your site.
+This action cannot be undone.
+ 'Cancel' to stop, 'OK' to delete.","warnBulkDelete":"You are about to permanently delete these items from your site.
+This action cannot be undone.
+ 'Cancel' to stop, 'OK' to delete.","warnBulkTrash":"You are about to trash these items.
+  'Cancel' to stop, 'OK' to delete.","bulkSelect":"Bulk select","trashSelected":"Move to Trash","restoreSelected":"Restore from Trash","deletePermanently":"Delete permanently","errorDeleting":"Error in deleting the attachment.","apply":"Apply","filterByDate":"Filter by date","filterByType":"Filter by type","searchLabel":"Search","searchMediaLabel":"Search media","searchMediaPlaceholder":"Search media items...","mediaFound":"Number of media items found: %d","noMedia":"No media items found.","noMediaTryNewSearch":"No media items found. Try a different search.","attachmentDetails":"Attachment details","insertFromUrlTitle":"Insert from URL","setFeaturedImageTitle":"Featured image","setFeaturedImage":"Set featured image","createGalleryTitle":"Create gallery","editGalleryTitle":"Edit gallery","cancelGalleryTitle":"← Cancel gallery","insertGallery":"Insert gallery","updateGallery":"Update gallery","addToGallery":"Add to gallery","addToGalleryTitle":"Add to gallery","reverseOrder":"Reverse order","imageDetailsTitle":"Image details","imageReplaceTitle":"Replace image","imageDetailsCancel":"Cancel edit","editImage":"Edit image","chooseImage":"Choose image","selectAndCrop":"Select and crop","skipCropping":"Skip cropping","cropImage":"Crop image","cropYourImage":"Crop your image","cropping":"Cropping…","suggestedDimensions":"Suggested image dimensions: %1$s by %2$s pixels.","cropError":"There has been an error cropping your image.","audioDetailsTitle":"Audio details","audioReplaceTitle":"Replace audio","audioAddSourceTitle":"Add audio source","audioDetailsCancel":"Cancel edit","videoDetailsTitle":"Video details","videoReplaceTitle":"Replace video","videoAddSourceTitle":"Add video source","videoDetailsCancel":"Cancel edit","videoSelectPosterImageTitle":"Select poster image","videoAddTrackTitle":"Add subtitles","playlistDragInfo":"Drag and drop to reorder tracks.","createPlaylistTitle":"Create audio playlist","editPlaylistTitle":"Edit audio playlist","cancelPlaylistTitle":"← Cancel audio playlist","insertPlaylist":"Insert audio playlist","updatePlaylist":"Update audio playlist","addToPlaylist":"Add to audio playlist","addToPlaylistTitle":"Add to Audio Playlist","videoPlaylistDragInfo":"Drag and drop to reorder videos.","createVideoPlaylistTitle":"Create video playlist","editVideoPlaylistTitle":"Edit video playlist","cancelVideoPlaylistTitle":"← Cancel video playlist","insertVideoPlaylist":"Insert video playlist","updateVideoPlaylist":"Update video playlist","addToVideoPlaylist":"Add to video playlist","addToVideoPlaylistTitle":"Add to video Playlist","filterAttachments":"Filter media","attachmentsList":"Media list","settings":{"tabs":[],"tabUrl":"https:\/\/itstest.websinova.com\/wp-admin\/media-upload.php?chromeless=1","mimeTypes":{"image":"Images","audio":"Audio","video":"Video","application\/msword,application\/vnd.openxmlformats-officedocument.wordprocessingml.document,application\/vnd.ms-word.document.macroEnabled.12,application\/vnd.ms-word.template.macroEnabled.12,application\/vnd.oasis.opendocument.text,application\/vnd.apple.pages,application\/pdf,application\/vnd.ms-xpsdocument,application\/oxps,application\/rtf,application\/wordperfect,application\/octet-stream":"Documents","application\/vnd.apple.numbers,application\/vnd.oasis.opendocument.spreadsheet,application\/vnd.ms-excel,application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application\/vnd.ms-excel.sheet.macroEnabled.12,application\/vnd.ms-excel.sheet.binary.macroEnabled.12":"Spreadsheets","application\/x-gzip,application\/rar,application\/x-tar,application\/zip,application\/x-7z-compressed":"Archives"},"captions":true,"nonce":{"sendToEditor":"82b7828c44"},"post":{"id":0},"defaultProps":{"link":"none","align":"","size":""},"attachmentCounts":{"audio":1,"video":1},"oEmbedProxyUrl":"https:\/\/itstest.websinova.com\/wp-json\/oembed\/1.0\/proxy","embedExts":["mp3","ogg","flac","m4a","wav","mp4","m4v","webm","ogv","flv"],"embedMimes":{"mp3":"audio\/mpeg","ogg":"audio\/ogg","flac":"audio\/flac","m4a":"audio\/mpeg","wav":"audio\/wav","mp4":"video\/mp4","m4v":"video\/mp4","webm":"video\/webm","ogv":"video\/ogg","flv":"video\/x-flv"},"contentWidth":1120,"months":[{"year":"2023","month":"4","text":"April 2023"},{"year":"2023","month":"3","text":"March 2023"}],"mediaTrash":0,"infiniteScrolling":0}};
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-includes/js/media-views.min.js?ver=6.1.1' id='media-views-js'></script>
@@ -3476,7 +3205,7 @@ var _wpMediaViewsL10n = {"mediaFrameDefaultTitle":"Media","url":"URL","addMedia"
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/tutor/assets/packages/SocialShare/SocialShare.min.js?ver=2.1.8' id='tutor-social-share-js'></script>
 <script type='text/javascript' id='tutor-frontend-js-extra'>
 /* <![CDATA[ */
-var _tutorobject = {"ajaxurl":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php","home_url":"https:\/\/itstest.websinova.com","site_title":"Testing Website","base_path":"\/","tutor_url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/","tutor_pro_url":null,"nonce_key":"_tutor_nonce","_tutor_nonce":"67839807af","loading_icon_url":"https:\/\/itstest.websinova.com\/wp-admin\/images\/wpspin_light.gif","placeholder_img_src":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/images\/placeholder.svg","enable_lesson_classic_editor":"1","tutor_frontend_dashboard_url":"https:\/\/itstest.websinova.com\/dashboard\/","wp_date_format":"MMMM d, yyyy","is_admin":"","is_admin_bar_showing":"","addons_data":[{"name":"BuddyPress","description":"Discuss about course and share your knowledge with your friends through BuddyPress","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/buddypress\/thumbnail.png"},{"name":"Gradebook","description":"Shows student progress from assignment and quiz","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/gradebook\/thumbnail.png"},{"name":"Content Drip","description":"Unlock lessons by schedule or when the student meets specific condition.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/content-drip\/thumbnail.png"},{"name":"Enrollment","description":"Take advanced control on enrollment. Enroll the student manually.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/enrollments\/thumbnail.png"},{"name":"WooCommerce Subscriptions","description":"Capture Residual Revenue with Recurring Payments.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/wc-subscriptions\/thumbnail.png"},{"name":"Paid Memberships Pro","description":"Maximize revenue by selling membership access to all of your courses.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/pmpro\/thumbnail.png"},{"name":"Restrict Content Pro","description":"Unlock Course depending on Restrict Content Pro Plugin Permission.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/restrict-content-pro\/thumbnail.png"},{"name":"Tutor Assignments","description":"Tutor assignments is a great way to assign tasks to students.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-assignments\/thumbnail.png"},{"name":"Tutor Certificate","description":"Students will be able to download a certificate after course completion.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-certificate\/thumbnail.png"},{"name":"Tutor Course Attachments","description":"Add unlimited attachments\/ private files to any Tutor course","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-course-attachments\/thumbnail.png"},{"name":"Tutor Course Preview","description":"Unlock some lessons for students before enrollment.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-course-preview\/thumbnail.png"},{"name":"Tutor E-Mail","description":"Send email on various tutor events","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-email\/thumbnail.png"},{"name":"Tutor Multi Instructors","description":"Start a course with multiple instructors by Tutor Multi Instructors","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-multi-instructors\/thumbnail.png"},{"name":"Tutor Prerequisites","description":"Specific course you must complete before you can enroll new course by Tutor Prerequisites","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-prerequisites\/thumbnail.png"},{"name":"Tutor Report","description":"Check your course performance through Tutor Report stats.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-report\/thumbnail.png"},{"name":"Quiz Export\/Import","description":"Save time by exporting\/importing quiz data with easy options.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/quiz-import-export\/thumbnail.png"},{"name":"Tutor Zoom Integration","description":"Connect Tutor LMS with Zoom to host live online classes. Students can attend live classes right from the lesson page.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-zoom\/thumbnail.png"},{"name":"Tutor Google Meet Integration","description":"Connect Tutor LMS with Google Meet to host live online classes. Students can attend live classes right from the lesson page.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/google-meet\/thumbnail.png"},{"name":"Google Classroom Integration","description":"Helps connect Google Classrooms with Tutor LMS courses, allowing you to use features like Classroom streams and files directly from the Tutor LMS course.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/google-classroom\/thumbnail.png"},{"name":"Calendar","description":"Allow students to see everything in a calendar view in the front dashboard.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-calendar\/thumbnail.png"},{"name":"Notifications","description":"Get On Site and Push Notifications on specified tutor events.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-notifications\/thumbnail.png"},{"name":"Weglot","description":"Translate & manage multilingual courses for global reach with full edit control.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-weglot\/thumbnail.png"},{"name":"WPML Multilingual CMS","description":"Create multilingual courses, lessons, dashboard and more for a global audience.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-wpml\/thumbnail.png"}],"current_user":{"data":{"ID":"13","user_login":"demo1","user_pass":"$P$By5ZxHyzvxRLTbXY6oONMHJrPCcLUc1","user_nicename":"demo1","user_email":"demo99@gmail.com","user_url":"","user_registered":"2023-04-09 13:17:04","user_activation_key":"","user_status":"0","display_name":"demo demo","last_login":null,"membership_level":false,"membership_levels":[]},"ID":13,"caps":{"subscriber":true},"cap_key":"wp_capabilities","roles":["subscriber"],"allcaps":{"read":true,"level_0":true,"subscriber":true},"filter":null},"content_change_event":"tutor_content_changed_event","is_tutor_course_edit":"","assignment_max_file_allowed":"0","current_page":"","quiz_answer_display_time":"2000","is_ssl":"1","course_list_page_url":"https:\/\/itstest.websinova.com\/wp-admin\/admin.php?page=tutor","course_post_type":"courses"};
+var _tutorobject = {"ajaxurl":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php","home_url":"https:\/\/itstest.websinova.com","site_title":"Testing Website","base_path":"\/","tutor_url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/","tutor_pro_url":null,"nonce_key":"_tutor_nonce","_tutor_nonce":"891d8a93ec","loading_icon_url":"https:\/\/itstest.websinova.com\/wp-admin\/images\/wpspin_light.gif","placeholder_img_src":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/images\/placeholder.svg","enable_lesson_classic_editor":"1","tutor_frontend_dashboard_url":"https:\/\/itstest.websinova.com\/dashboard\/","wp_date_format":"MMMM d, yyyy","is_admin":"","is_admin_bar_showing":"","addons_data":[{"name":"BuddyPress","description":"Discuss about course and share your knowledge with your friends through BuddyPress","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/buddypress\/thumbnail.png"},{"name":"Gradebook","description":"Shows student progress from assignment and quiz","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/gradebook\/thumbnail.png"},{"name":"Content Drip","description":"Unlock lessons by schedule or when the student meets specific condition.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/content-drip\/thumbnail.png"},{"name":"Enrollment","description":"Take advanced control on enrollment. Enroll the student manually.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/enrollments\/thumbnail.png"},{"name":"WooCommerce Subscriptions","description":"Capture Residual Revenue with Recurring Payments.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/wc-subscriptions\/thumbnail.png"},{"name":"Paid Memberships Pro","description":"Maximize revenue by selling membership access to all of your courses.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/pmpro\/thumbnail.png"},{"name":"Restrict Content Pro","description":"Unlock Course depending on Restrict Content Pro Plugin Permission.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/restrict-content-pro\/thumbnail.png"},{"name":"Tutor Assignments","description":"Tutor assignments is a great way to assign tasks to students.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-assignments\/thumbnail.png"},{"name":"Tutor Certificate","description":"Students will be able to download a certificate after course completion.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-certificate\/thumbnail.png"},{"name":"Tutor Course Attachments","description":"Add unlimited attachments\/ private files to any Tutor course","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-course-attachments\/thumbnail.png"},{"name":"Tutor Course Preview","description":"Unlock some lessons for students before enrollment.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-course-preview\/thumbnail.png"},{"name":"Tutor E-Mail","description":"Send email on various tutor events","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-email\/thumbnail.png"},{"name":"Tutor Multi Instructors","description":"Start a course with multiple instructors by Tutor Multi Instructors","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-multi-instructors\/thumbnail.png"},{"name":"Tutor Prerequisites","description":"Specific course you must complete before you can enroll new course by Tutor Prerequisites","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-prerequisites\/thumbnail.png"},{"name":"Tutor Report","description":"Check your course performance through Tutor Report stats.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-report\/thumbnail.png"},{"name":"Quiz Export\/Import","description":"Save time by exporting\/importing quiz data with easy options.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/quiz-import-export\/thumbnail.png"},{"name":"Tutor Zoom Integration","description":"Connect Tutor LMS with Zoom to host live online classes. Students can attend live classes right from the lesson page.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-zoom\/thumbnail.png"},{"name":"Tutor Google Meet Integration","description":"Connect Tutor LMS with Google Meet to host live online classes. Students can attend live classes right from the lesson page.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/google-meet\/thumbnail.png"},{"name":"Google Classroom Integration","description":"Helps connect Google Classrooms with Tutor LMS courses, allowing you to use features like Classroom streams and files directly from the Tutor LMS course.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/google-classroom\/thumbnail.png"},{"name":"Calendar","description":"Allow students to see everything in a calendar view in the front dashboard.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-calendar\/thumbnail.png"},{"name":"Notifications","description":"Get On Site and Push Notifications on specified tutor events.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-notifications\/thumbnail.png"},{"name":"Weglot","description":"Translate & manage multilingual courses for global reach with full edit control.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-weglot\/thumbnail.png"},{"name":"WPML Multilingual CMS","description":"Create multilingual courses, lessons, dashboard and more for a global audience.","url":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/tutor\/assets\/addons\/tutor-wpml\/thumbnail.png"}],"current_user":{"data":{"ID":"10","user_login":"django","user_pass":"$P$BNPdH8zki.nPUwNJUnwCErz4tPZ00f0","user_nicename":"django","user_email":"django@gmail.com","user_url":"","user_registered":"2023-04-03 11:40:48","user_activation_key":"","user_status":"0","display_name":"django django","last_login":"2023-04-04 09:27:32"},"ID":10,"caps":{"subscriber":true},"cap_key":"wp_capabilities","roles":["subscriber"],"allcaps":{"read":true,"level_0":true,"subscriber":true},"filter":null},"content_change_event":"tutor_content_changed_event","is_tutor_course_edit":"","assignment_max_file_allowed":"0","current_page":"","quiz_answer_display_time":"2000","is_ssl":"1","course_list_page_url":"https:\/\/itstest.websinova.com\/wp-admin\/admin.php?page=tutor","course_post_type":"courses"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/tutor/assets/js/tutor-front.min.js?ver=2.1.8' id='tutor-frontend-js'></script>
@@ -3484,42 +3213,20 @@ var _tutorobject = {"ajaxurl":"https:\/\/itstest.websinova.com\/wp-admin\/admin-
 <script type='text/javascript' id='jquery-ui-datepicker-js-after'>
 jQuery(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Previous","dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"dateFormat":"MM d, yy","firstDay":1,"isRTL":false});});
 </script>
-<script type='text/javascript' id='jquery-blockui-js-extra'>
-/* <![CDATA[ */
-var jquery_blockui_params = {"cart_url":"https:\/\/itstest.websinova.com\/checkout\/","i18n_view_cart":"Checkout"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.7.5.1' id='jquery-blockui-js'></script>
-<script type='text/javascript' id='js-cookie-js-extra'>
-/* <![CDATA[ */
-var js_cookie_params = {"cart_url":"https:\/\/itstest.websinova.com\/checkout\/","i18n_view_cart":"Checkout"};
-/* ]]> */
-</script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.7.5.1' id='js-cookie-js'></script>
 <script type='text/javascript' id='woocommerce-js-extra'>
 /* <![CDATA[ */
-var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%&elementor_page_id=16045","cart_url":"https:\/\/itstest.websinova.com\/checkout\/","i18n_view_cart":"Checkout"};
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%&elementor_page_id=16045"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=7.5.1' id='woocommerce-js'></script>
 <script type='text/javascript' id='wc-cart-fragments-js-extra'>
 /* <![CDATA[ */
-var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%&elementor_page_id=16045","cart_hash_key":"wc_cart_hash_11c11394bc7c8d9e296a74d5c080331a","fragment_name":"wc_fragments_11c11394bc7c8d9e296a74d5c080331a","request_timeout":"5000","cart_url":"https:\/\/itstest.websinova.com\/checkout\/","i18n_view_cart":"Checkout"};
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%&elementor_page_id=16045","cart_hash_key":"wc_cart_hash_11c11394bc7c8d9e296a74d5c080331a","fragment_name":"wc_fragments_11c11394bc7c8d9e296a74d5c080331a","request_timeout":"5000"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=7.5.1' id='wc-cart-fragments-js'></script>
-<script type='text/javascript' id='wpsbc-script-js-extra'>
-/* <![CDATA[ */
-var wpsbc = {"ajax_url":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/wp-simple-booking-calendar/assets/js/script-front-end.min.js?ver=2.0.8.3' id='wpsbc-script-js'></script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/themes/consulting/assets/js/bootstrap.min.js?ver=6.2.9' id='bootstrap-js'></script>
-<script type='text/javascript' id='select2-js-extra'>
-/* <![CDATA[ */
-var select2_params = {"cart_url":"https:\/\/itstest.websinova.com\/checkout\/","i18n_view_cart":"Checkout"};
-/* ]]> */
-</script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/js/select2/select2.full.min.js?ver=4.0.3-wc.7.5.1' id='select2-js'></script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/themes/consulting/assets/js/custom.js?ver=6.2.9' id='consulting-custom-js'></script>
 <script type='text/javascript' id='stm-hfe-js-extra'>
@@ -3530,24 +3237,10 @@ var consulting_ehf_position_13168 = {"id":"13168","header_view":"","header_posit
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/themes/consulting/assets/js/stm-hfe.js?ver=6.2.9' id='stm-hfe-js'></script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/3d-flipbook-dflip-lite/assets/js/dflip.min.js?ver=1.7.35' id='dflip-script-js'></script>
-<script type='text/javascript' id='joinchat-lite-js-extra'>
-/* <![CDATA[ */
-var joinchat_obj = {"settings":{"telephone":"919167989179","whatsapp_web":false,"message_send":"Hi need help"}};
-/* ]]> */
-</script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/creame-whatsapp-me/public/js/joinchat-lite.min.js?ver=4.5.20' id='joinchat-lite-js'></script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-includes/js/jquery/ui/accordion.min.js?ver=1.13.2' id='jquery-ui-accordion-js'></script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/js/mixitup.min.js?ver=1' id='mep-mixitup-min-js-js'></script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/js/countdown.jquery.min.js?ver=1' id='mep-countdown-js-js'></script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/js/filter_pagination.js?ver=1681046225' id='filter_pagination-js'></script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/js/mp_event_custom_script.js?ver=1681046225' id='mp_event_custom_script-js'></script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/js/timeline.min.js?ver=1' id='mep-timeline-min-js'></script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/js/mkb-scripts.js?ver=1681046225' id='mep-event-custom-scripts-js'></script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/js/mep_event_faq.js?ver=1' id='mep-event-faq-js'></script>
-<script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/mage-eventpress/js/owl.carousel.min.js?ver=1' id='mep-owl-carousel-min-js'></script>
+
 <script type='text/javascript' id='eael-general-js-extra'>
 /* <![CDATA[ */
-var localize = {"ajaxurl":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php","nonce":"08e2b97849","i18n":{"added":"Added ","compare":"Compare","loading":"Loading..."},"eael_translate_text":{"required_text":"is a required field","invalid_text":"Invalid","billing_text":"Billing","shipping_text":"Shipping","fg_mfp_counter_text":"of"},"page_permalink":"https:\/\/itstest.websinova.com\/dashboard\/","cart_redirectition":"","cart_page_url":"https:\/\/itstest.websinova.com\/cart\/","el_breakpoints":{"mobile":{"label":"Mobile","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Extra","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Extra","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}};
+var localize = {"ajaxurl":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php","nonce":"1102aca113","i18n":{"added":"Added ","compare":"Compare","loading":"Loading..."},"eael_translate_text":{"required_text":"is a required field","invalid_text":"Invalid","billing_text":"Billing","shipping_text":"Shipping","fg_mfp_counter_text":"of"},"page_permalink":"https:\/\/itstest.websinova.com\/dashboard\/","cart_redirectition":"no","cart_page_url":"https:\/\/itstest.websinova.com\/cart-2\/","el_breakpoints":{"mobile":{"label":"Mobile","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Extra","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Extra","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}};
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/essential-addons-for-elementor-lite/assets/front-end/js/view/general.min.js?ver=5.6.4' id='eael-general-js'></script>
@@ -3556,7 +3249,7 @@ var localize = {"ajaxurl":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.11.5' id='elementor-webpack-runtime-js'></script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.11.5' id='elementor-frontend-modules-js'></script>
 <script type='text/javascript' id='elementor-pro-frontend-js-before'>
-var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php","nonce":"28a2c3ed7e","urls":{"assets":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"https:\/\/itstest.websinova.com\/wp-json\/"},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"woocommerce":{"menu_cart":{"cart_page_url":"https:\/\/itstest.websinova.com\/cart\/","checkout_page_url":"https:\/\/itstest.websinova.com\/checkout\/","fragments_nonce":"9dc8557f9b"}},"facebook_sdk":{"lang":"en_US","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/itstest.websinova.com\/wp-admin\/admin-ajax.php","nonce":"3fe0b62bb2","urls":{"assets":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"https:\/\/itstest.websinova.com\/wp-json\/"},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"woocommerce":{"menu_cart":{"cart_page_url":"https:\/\/itstest.websinova.com\/cart-2\/","checkout_page_url":"https:\/\/itstest.websinova.com\/checkout-2\/","fragments_nonce":"4a66713242"}},"facebook_sdk":{"lang":"en_US","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/itstest.websinova.com\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=3.11.4' id='elementor-pro-frontend-js'></script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2' id='elementor-waypoints-js'></script>
@@ -3572,36 +3265,64 @@ var wpformsElementorVars = {"captcha_provider":"recaptcha","recaptcha_type":"v2"
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/wpforms-lite/assets/js/integrations/elementor/frontend.min.js?ver=1.8.1.1' id='wpforms-elementor-js'></script>
-<script type='text/javascript' id='zoom-js-extra'>
-/* <![CDATA[ */
-var zoom_params = {"cart_url":"https:\/\/itstest.websinova.com\/checkout\/","i18n_view_cart":"Checkout"};
-/* ]]> */
-</script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/js/zoom/jquery.zoom.min.js?ver=1.7.21-wc.7.5.1' id='zoom-js'></script>
-<script type='text/javascript' id='photoswipe-js-extra'>
-/* <![CDATA[ */
-var photoswipe_params = {"cart_url":"https:\/\/itstest.websinova.com\/checkout\/","i18n_view_cart":"Checkout"};
-/* ]]> */
-</script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js?ver=4.1.1-wc.7.5.1' id='photoswipe-js'></script>
-<script type='text/javascript' id='photoswipe-ui-default-js-extra'>
-/* <![CDATA[ */
-var photoswipe_ui_default_params = {"cart_url":"https:\/\/itstest.websinova.com\/checkout\/","i18n_view_cart":"Checkout"};
-/* ]]> */
-</script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default.min.js?ver=4.1.1-wc.7.5.1' id='photoswipe-ui-default-js'></script>
 <script type='text/javascript' id='wc-add-to-cart-variation-js-extra'>
 /* <![CDATA[ */
-var wc_add_to_cart_variation_params = {"wc_ajax_url":"\/?wc-ajax=%%endpoint%%&elementor_page_id=16045","i18n_no_matching_variations_text":"Sorry, no products matched your selection. Please choose a different combination.","i18n_make_a_selection_text":"Please select some product options before adding this product to your cart.","i18n_unavailable_text":"Sorry, this product is unavailable. Please choose a different combination.","cart_url":"https:\/\/itstest.websinova.com\/checkout\/","i18n_view_cart":"Checkout"};
+var wc_add_to_cart_variation_params = {"wc_ajax_url":"\/?wc-ajax=%%endpoint%%&elementor_page_id=16045","i18n_no_matching_variations_text":"Sorry, no products matched your selection. Please choose a different combination.","i18n_make_a_selection_text":"Please select some product options before adding this product to your cart.","i18n_unavailable_text":"Sorry, this product is unavailable. Please choose a different combination."};
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=7.5.1' id='wc-add-to-cart-variation-js'></script>
 <script type='text/javascript' id='wc-single-product-js-extra'>
 /* <![CDATA[ */
-var wc_single_product_params = {"i18n_required_rating_text":"Please select a rating","review_rating_required":"yes","flexslider":{"rtl":false,"animation":"slide","smoothHeight":true,"directionNav":false,"controlNav":"thumbnails","slideshow":false,"animationSpeed":500,"animationLoop":false,"allowOneSlide":false},"zoom_enabled":"1","zoom_options":[],"photoswipe_enabled":"1","photoswipe_options":{"shareEl":false,"closeOnScroll":false,"history":false,"hideAnimationDuration":0,"showAnimationDuration":0},"flexslider_enabled":"","cart_url":"https:\/\/itstest.websinova.com\/checkout\/","i18n_view_cart":"Checkout"};
+var wc_single_product_params = {"i18n_required_rating_text":"Please select a rating","review_rating_required":"yes","flexslider":{"rtl":false,"animation":"slide","smoothHeight":true,"directionNav":false,"controlNav":"thumbnails","slideshow":false,"animationSpeed":500,"animationLoop":false,"allowOneSlide":false},"zoom_enabled":"1","zoom_options":[],"photoswipe_enabled":"1","photoswipe_options":{"shareEl":false,"closeOnScroll":false,"history":false,"hideAnimationDuration":0,"showAnimationDuration":0},"flexslider_enabled":""};
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://itstest.websinova.com/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min.js?ver=7.5.1' id='wc-single-product-js'></script>
-<div class='xlwcty_header_passed' style='display: none;'></div></body>
+<div class='xlwcty_header_passed' style='display: none;'></div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const filePreviews = document.querySelectorAll(".file-preview");
+
+    filePreviews.forEach((preview) => {
+      const url = preview.dataset.url;
+
+      if (url.endsWith(".pdf")) {
+        const loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(
+          (pdf) => {
+            pdf.getPage(1).then((page) => {
+              const scale = 1;
+              const viewport = page.getViewport({ scale: scale });
+
+              const canvas = document.createElement("canvas");
+              const context = canvas.getContext("2d");
+              canvas.height = viewport.height;
+              canvas.width = viewport.width;
+
+              const renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+              };
+
+              page.render(renderContext).then(() => {
+                preview.style.backgroundImage = `url(${canvas.toDataURL()})`;
+              });
+            });
+          },
+          (reason) => {
+            console.error("Error loading PDF: " + reason);
+          }
+        );
+      } else {
+        preview.style.backgroundImage = `url(${url})`;
+      }
+    });
+  });
+</script>
+
+</body>
 </html> 
+ 
 
