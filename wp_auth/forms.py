@@ -34,14 +34,11 @@ class SignUpForm(UserCreationForm):
 
 
 def validate_file_extension(value):
-    limit = 125 * 1024  # 125 KB in bytes
-    if value.size > limit:
-        raise ValidationError(_("File size exceeds the maximum limit of 125 KB."))
     ext = value.name.split(".")[-1]
     valid_extensions = ["pdf", "jpg", "jpeg", "png"]
     if not ext.lower() in valid_extensions:
         raise ValidationError(
-            _("File type not supported. Only PDF, JPG, and PNG files are allowed.")
+            "File type not supported. Only PDF, JPG, and PNG files are allowed."
         )
 
 
