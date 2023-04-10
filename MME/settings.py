@@ -147,4 +147,4 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 PAGINATION_DEFAULT_PAGINATION = 5
 LOGIN_REDIRECT_URL = "upload_documents"
-LOGIN_URL = "login/"
+# LOGIN_URL = ""

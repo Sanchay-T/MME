@@ -17,7 +17,7 @@ urlpatterns = [
     path("upload_edit2/", DocumentUpdateView2.as_view(), name="edit_documents2"),
     path("upload_edit3/", DocumentUpdateView3.as_view(), name="edit_documents3"),
     path(
-        "login/",
+        "accounts/login/",
         auth_views.LoginView.as_view(
             template_name="login.html", form_class=CustomLoginForm
         ),
