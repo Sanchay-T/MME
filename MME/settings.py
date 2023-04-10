@@ -129,7 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -151,18 +151,8 @@ LOGIN_REDIRECT_URL = "upload_documents"
 # LOGIN_URL = ""
 
 
-# Replace with your Space access key and secret key
+from .cdn.conf import *
+
+
 AWS_ACCESS_KEY_ID = "DO00DE9TAA4DHP8LYXTR"
 AWS_SECRET_ACCESS_KEY = "gW+vXZScuqaqZXpGrTuGVR+pN3z8J2hOZatn7hwv5OQ"
-
-# Set your Space name and the endpoint
-AWS_STORAGE_BUCKET_NAME = "managemyexpat"
-AWS_S3_ENDPOINT_URL = "https://sgp1.digitaloceanspaces.com"
-
-# Static files settings
-STATIC_URL = f"{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/static/"
-STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-
-# Media files settings
-MEDIA_URL = f"{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/media/"
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
