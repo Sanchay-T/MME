@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "fontawesomefree",
     "django_countries",
     "crispy_forms",
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -148,3 +149,20 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 PAGINATION_DEFAULT_PAGINATION = 5
 LOGIN_REDIRECT_URL = "upload_documents"
 # LOGIN_URL = ""
+
+
+# Replace with your Space access key and secret key
+AWS_ACCESS_KEY_ID = "DO00DE9TAA4DHP8LYXTR"
+AWS_SECRET_ACCESS_KEY = "gW+vXZScuqaqZXpGrTuGVR+pN3z8J2hOZatn7hwv5OQ"
+
+# Set your Space name and the endpoint
+AWS_STORAGE_BUCKET_NAME = "managemyexpat"
+AWS_S3_ENDPOINT_URL = "https://sgp1.digitaloceanspaces.com"
+
+# Static files settings
+STATIC_URL = f"{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/static/"
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+# Media files settings
+MEDIA_URL = f"{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/media/"
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
