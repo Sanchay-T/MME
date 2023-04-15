@@ -9,6 +9,11 @@ from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 
 
+from django.views.generic import TemplateView
+
+handler404 = TemplateView.as_view(template_name="404.html")
+
+
 def signup(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
