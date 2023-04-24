@@ -7,7 +7,7 @@
     <ul class="tutor-dashboard-permalinks">
       <li class="tutor-dashboard-menu-item tutor-dashboard-menu-index">
         <a
-          href="https://itstest.websinova.com/dashboard/"
+          href="https://managemyexpat.com/dashboard/"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
         >
           <span
@@ -20,7 +20,7 @@
       </li>
       <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
         <a
-          href="https://itstest.websinova.com/dashboard/my-profile"
+          href="https://managemyexpat.com/dashboard/my-profile"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
         >
           <span
@@ -35,7 +35,7 @@
         class="tutor-dashboard-menu-item tutor-dashboard-menu-enrolled-courses"
       >
         <a
-          href="https://itstest.websinova.com/dashboard/enrolled-courses"
+          href="https://managemyexpat.com/dashboard/enrolled-courses"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
         >
           <span
@@ -50,7 +50,7 @@
         class="tutor-dashboard-menu-item tutor-dashboard-menu-purchase_history"
       >
         <a
-          href="https://itstest.websinova.com/dashboard/purchase_history"
+          href="https://managemyexpat.com/dashboard/purchase_history"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
         >
           <span
@@ -61,7 +61,9 @@
           </span>
         </a>
       </li>
-      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile active">
+      <li
+        class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile active"
+      >
         <a
           href="{% url 'upload_documents' %}"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
@@ -75,9 +77,7 @@
         </a>
       </li>
 
-      <li
-        class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile "
-      >
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
         <a
           href="{% url 'travel_calendar' %}"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
@@ -136,7 +136,7 @@
       <li class="tutor-dashboard-menu-divider"></li>
       <li class="tutor-dashboard-menu-item tutor-dashboard-menu-settings">
         <a
-          href="https://itstest.websinova.com/dashboard/settings"
+          href="https://managemyexpat.com/dashboard/settings"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
         >
           <span class="tutor-icon-gear tutor-dashboard-menu-item-icon"></span>
@@ -146,7 +146,10 @@
         </a>
       </li>
       <li class="tutor-dashboard-menu-item tutor-dashboard-menu-logout">
-        <a href="{% url 'logout' %}" class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black">
+        <a
+          href="{% url 'logout' %}"
+          class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
+        >
           <span
             class="tutor-icon-signout tutor-dashboard-menu-item-icon"
           ></span>
@@ -164,19 +167,15 @@
         class="tutor-fs-5 tutor-fw-medium tutor-color-black tutor-capitalize-text tutor-mb-1 tutor-dashboard-title"
       ></div>
 
-      {% endblock active %} {% block 'content' %}
-
-    
-    
-      {% if not user_documents %}
-        <h2>Upload Documents</h2>
-        <form method="post" enctype="multipart/form-data">
-          {% csrf_token %} {{ form.as_p }} {% if user_documents %}
-          <button type="submit" class="btn btn-primary">Edit Documents</button>
-          {% else %}
-          <button type="submit" class="btn btn-primary">Upload Documents</button>
-          {% endif %}
-        </form>
+      {% endblock active %} {% block 'content' %} {% if not user_documents %}
+      <h2>Upload Documents</h2>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{ form.as_p }} {% if user_documents %}
+        <button type="submit" class="btn btn-primary">Edit Documents</button>
+        {% else %}
+        <button type="submit" class="btn btn-primary">Upload Documents</button>
+        {% endif %}
+      </form>
 
       {% else %}
       <h3>Your uploaded documents</h3>
@@ -199,7 +198,9 @@
               ></div>
             </td>
             <td>
-              <a href="{{ user_documents.pan.url }}" class="custom-btn">Download</a>
+              <a href="{{ user_documents.pan.url }}" class="custom-btn"
+                >Download</a
+              >
             </td>
           </tr>
           <tr>
@@ -211,7 +212,9 @@
               ></div>
             </td>
             <td>
-              <a href="{{ user_documents.frro.url }}" class="custom-btn">Download</a>
+              <a href="{{ user_documents.frro.url }}" class="custom-btn"
+                >Download</a
+              >
             </td>
           </tr>
           <tr>
@@ -223,7 +226,9 @@
               ></div>
             </td>
             <td>
-              <a href="{{ user_documents.entry.url }}" class="custom-btn">Download</a>
+              <a href="{{ user_documents.entry.url }}" class="custom-btn"
+                >Download</a
+              >
             </td>
           </tr>
           <tr>
@@ -235,13 +240,14 @@
               ></div>
             </td>
             <td>
-              <a href="{{ user_documents.exit.url }}" class="custom-btn">Download</a>
+              <a href="{{ user_documents.exit.url }}" class="custom-btn"
+                >Download</a
+              >
             </td>
           </tr>
         </tbody>
       </table>
       <a href="{% url 'edit_documents' %}" class="custom-btn">Update</a>
-      
 
       {% endif %} {% endblock 'content' %}
     </div>
