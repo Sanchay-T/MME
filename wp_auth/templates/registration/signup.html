@@ -1,13 +1,13 @@
-{% extends 'base.html' %} {% load static %}  {% block active %}
+{% extends 'base.html' %} {% load static %} {% block active %}
 
 <div class="tutor-row tutor-frontend-dashboard-maincontent">
   <div
     class="tutor-col-12 tutor-col-md-4 tutor-col-lg-3 tutor-dashboard-left-menu"
   >
     <ul class="tutor-dashboard-permalinks">
-      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-index active ">
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-index active">
         <a
-          href="https://itstest.websinova.com/dashboard/"
+          href="https://managemyexpat.com/dashboard/"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
         >
           <span
@@ -20,7 +20,7 @@
       </li>
       <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
         <a
-          href="https://itstest.websinova.com/dashboard/my-profile"
+          href="https://managemyexpat.com/dashboard/my-profile"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
         >
           <span
@@ -35,7 +35,7 @@
         class="tutor-dashboard-menu-item tutor-dashboard-menu-enrolled-courses"
       >
         <a
-          href="https://itstest.websinova.com/dashboard/enrolled-courses"
+          href="https://managemyexpat.com/dashboard/enrolled-courses"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
         >
           <span
@@ -50,7 +50,7 @@
         class="tutor-dashboard-menu-item tutor-dashboard-menu-purchase_history"
       >
         <a
-          href="https://itstest.websinova.com/dashboard/purchase_history"
+          href="https://managemyexpat.com/dashboard/purchase_history"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
         >
           <span
@@ -103,9 +103,7 @@
         </a>
       </li>
 
-      <li
-        class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile "
-      >
+      <li class="tutor-dashboard-menu-item tutor-dashboard-menu-my-profile">
         <a
           href="{% url 'my_taxes' %}"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
@@ -136,7 +134,7 @@
       <li class="tutor-dashboard-menu-divider"></li>
       <li class="tutor-dashboard-menu-item tutor-dashboard-menu-settings">
         <a
-          href="https://itstest.websinova.com/dashboard/settings"
+          href="https://managemyexpat.com/dashboard/settings"
           class="tutor-dashboard-menu-item-link tutor-fs-6 tutor-color-black"
         >
           <span class="tutor-icon-gear tutor-dashboard-menu-item-icon"></span>
@@ -186,11 +184,10 @@
                   id="{{ form.username.auto_id }}"
                   required
                 />
-                {% if form.username.errors %} 
-                  {% for error in form.username.errors %}
+                {% if form.username.errors %} {% for error in
+                form.username.errors %}
                 <div class="invalid-feedback text-danger">{{ error }}</div>
-                  {% endfor %} 
-                {% endif %}
+                {% endfor %} {% endif %}
               </div>
             </div>
           </div>
@@ -207,11 +204,9 @@
                   id="{{ form.email.auto_id }}"
                   required
                 />
-                {% if form.email.errors %} 
-                  {% for error in form.email.errors %}
+                {% if form.email.errors %} {% for error in form.email.errors %}
                 <div class="invalid-feedback text-danger">{{ error }}</div>
-                  {% endfor %} 
-                {% endif %}
+                {% endfor %} {% endif %}
               </div>
             </div>
           </div>
@@ -229,11 +224,10 @@
                   autocomplete="new-password"
                   required
                 />
-                {% if form.password1.errors %} 
-                  {% for error in form.password1.errors %}
+                {% if form.password1.errors %} {% for error in
+                form.password1.errors %}
                 <div class="invalid-feedback text-danger">{{ error }}</div>
-                  {% endfor %} 
-                {% endif %}
+                {% endfor %} {% endif %}
               </div>
             </div>
           </div>
@@ -253,11 +247,10 @@
                   autocomplete="new-password"
                   required
                 />
-                {% if form.password2.errors %} 
-                  {% for error in form.password2.errors %}
+                {% if form.password2.errors %} {% for error in
+                form.password2.errors %}
                 <div class="invalid-feedback text-danger">{{ error }}</div>
-                  {% endfor %} 
-                {% endif %}
+                {% endfor %} {% endif %}
               </div>
             </div>
           </div>
