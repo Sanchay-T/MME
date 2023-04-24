@@ -1,4 +1,21 @@
-{% extends 'base.html' %} {% block active %}
+{% extends 'base.html' %} {% load static %} {% block active %}
+<style>
+  .resident {
+    background-color: black;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 100px;
+    width: 150px; /* adjust as needed */
+    transition: background-color 0.3s ease;
+  }
+  
+  .resident:hover {
+    background-color: red;
+    cursor: pointer;
+  }
+</style>
 
 <div class="tutor-row tutor-frontend-dashboard-maincontent">
   <div
@@ -213,8 +230,9 @@
               </div>
             </div>
           </div>
+          <div>
           <button type="submit" class="btn btn-dark">Submit</button>
-          <a href="https://incometaxindia.gov.in/Pages/tools/residential-status-calculator.aspx" class="custom-btn1">Residential Status Calculator</a>
+          <a href="https://incometaxindia.gov.in/Pages/tools/residential-status-calculator.aspx" class="resident" >Residential Status Calculator</a>
 
         </form>
       
