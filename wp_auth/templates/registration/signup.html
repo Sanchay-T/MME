@@ -225,10 +225,11 @@
                   autocomplete="new-password"
                   required
                 />
-                {% if form.password1.errors %} {% for error in
-                form.password1.errors %}
+                {% if form.password1.errors %} 
+                  {% for error in form.password1.errors %}
                 <div class="invalid-feedback text-danger">{{ error }}</div>
-                {% endfor %} {% endif %}
+                  {% endfor %} 
+                {% endif %}
               </div>
             </div>
           </div>
@@ -248,10 +249,11 @@
                   autocomplete="new-password"
                   required
                 />
-                {% if form.password2.errors %} {% for error in
-                form.password2.errors %}
+                {% if form.password2.errors %} 
+                  {% for error in form.password2.errors %}
                 <div class="invalid-feedback text-danger">{{ error }}</div>
-                {% endfor %} {% endif %}
+                  {% endfor %}
+                {% endif %}
               </div>
             </div>
           </div>
