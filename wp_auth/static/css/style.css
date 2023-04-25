@@ -1001,7 +1001,7 @@ input[type="button"].btn-primary:hover {
   border-color: #0062cc;
   color: #fff;
 }
-
+/* 
 button[type="submit"] {
   background-color: black;
   border: none;
@@ -1009,16 +1009,21 @@ button[type="submit"] {
   color: white;
   padding: 10px 20px;
   margin-top: 1px;
-  width: 150px; /* adjust as needed */
+  width: 150px; /* adjust as needed
   transition: background-color 0.3s ease;
-}
+} */
 
-button[type="submit"]:hover {
+/* button[type="submit"]:hover {
   background-color: red;
   cursor: pointer;
-}
+} */
 
-.resident {
+a.resident {
+  background-color: #000;
+  border-color: #000;
+  border-radius: 5px; /* add rounded corners */
+  color: #fff;
+  transition: all 0.15s ease-in-out;
   background-color: black;
   border: none;
   border-radius: 8px;
@@ -1029,9 +1034,8 @@ button[type="submit"]:hover {
   transition: background-color 0.3s ease;
 }
 
-.resident:hover {
+a.resident:hover {
   background-color: red;
-  cursor: pointer;
 }
 
 form .form-control-file {
@@ -1065,6 +1069,8 @@ a.btn {
 .custom-btn:hover {
   background-color: red;
   cursor: pointer;
+  text-decoration: none;
+  color: white;
 }
 
 .pagination {
@@ -1090,4 +1096,11 @@ a.btn {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: black !important;
+  border-color: black !important;
 }
