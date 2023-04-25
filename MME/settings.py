@@ -164,3 +164,8 @@ from .cdn.conf import *
 
 AWS_ACCESS_KEY_ID = "DO00DE9TAA4DHP8LYXTR"
 AWS_SECRET_ACCESS_KEY = "gW+vXZScuqaqZXpGrTuGVR+pN3z8J2hOZatn7hwv5OQ"
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'wp_auth.validators.AllowAllPasswordsValidator',
+    },
+]
