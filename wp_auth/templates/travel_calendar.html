@@ -1,5 +1,18 @@
 {% extends 'base.html' %} {% load static %} {% block active %}
+
+
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+
 <style>
+
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
   .resident {
     background-color: black;
     border: none;
@@ -205,7 +218,7 @@
                 {{ form.country }}
                 <span class="error-message">{{ form.country.errors }}</span>
               </div>
-              <div class="form-group col-md-2.3">
+              <div class="form-group col-md-2">
                 <label for="{{ form.date_of_arrival.auto_id }}"
                   >Date of Arrival</label
                 >
@@ -214,7 +227,7 @@
                   >{{ form.date_of_arrival.errors }}</span
                 >
               </div>
-              <div class="form-group col-md-2.3">
+              <div class="form-group col-md-2">
                 <label for="{{ form.date_of_departure.auto_id }}"
                   >Date of Departure</label
                 >
