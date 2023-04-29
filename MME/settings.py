@@ -88,7 +88,7 @@ DATABASES = {
         "NAME": os.getenv("DATABASE_NAME"),
         "USER": os.getenv("DATABASE_USER"),
         "PASSWORD": os.getenv("DATABASE_PASS"),
-        "HOST": "sql685.main-hosting.eu",
+        "HOST": "sql983.main-hosting.eu",
         "PORT": os.getenv("DATABASE_PORT"),
     }
 }
@@ -166,6 +166,6 @@ AWS_ACCESS_KEY_ID = "DO00DE9TAA4DHP8LYXTR"
 AWS_SECRET_ACCESS_KEY = "gW+vXZScuqaqZXpGrTuGVR+pN3z8J2hOZatn7hwv5OQ"
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'wp_auth.validators.AllowAllPasswordsValidator',
+        "NAME": "wp_auth.validators.AllowAllPasswordsValidator",
     },
 ]
