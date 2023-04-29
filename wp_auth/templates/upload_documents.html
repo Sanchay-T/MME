@@ -171,9 +171,9 @@
       <h2>Upload Documents</h2>
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %} {{ form.as_p }} {% if user_documents %}
-        <button type="submit" class="btn btn-primary">Edit Documents</button>
+        <button type="submit" class="custom-btn">Edit Documents</button>
         {% else %}
-        <button type="submit" class="btn btn-primary">Upload Documents</button>
+        <button type="submit" class="custom-btn">Upload Documents</button>
         {% endif %}
       </form>
 
